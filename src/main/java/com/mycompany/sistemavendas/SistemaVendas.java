@@ -4,7 +4,8 @@
 
 package com.mycompany.sistemavendas;
 
-import com.my.company.ferramentas.ConexaoBancoDeDadosMySql;
+import com.my.company.ferramentas.BancoDeDadosMySql;
+import com.mycompany.dao.DaoCategoria;
 import java.sql.Connection;
 
 /**
@@ -14,10 +15,14 @@ import java.sql.Connection;
 public class SistemaVendas {
 
     public static void main(String[] args) {
-        Connection connection = ConexaoBancoDeDadosMySql.obterConexao();
+        BancoDeDadosMySql.conectar();
         
-        if (connection != null){
-            System.out.println("Conexão com o banco de dados estabelecida.");
+        //Teste listagem
+        DaoCategoria categoria = new DaoCategoria();
+        
+        for(int i = 0; i < categoria.listar().size(); i++){
+            System.out.println(categoria.listar().get(i).getId());
+            System.out.println(categoria.listar().get(i).getNome());
         }
     }
 }

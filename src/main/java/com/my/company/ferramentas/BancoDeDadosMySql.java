@@ -6,20 +6,26 @@ package com.my.company.ferramentas;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
  *
  * @author jose_
  */
-public class ConexaoBancoDeDadosMySql {
+public class BancoDeDadosMySql {
     // Configurações do banco de dados
-    private static final String URL = "jdbc:mysql://localhost:3306/sistema_vendas";
+    private static final String URL = "jdbc:mysql://localhost:3306/banco_de_dados_pedidos";
     private static final String USUARIO = "root";
     private static final String SENHA = "admin";
 
+    private static Connection conexao = null;
+    private static PreparedStatement statement = null;
+    private static ResultSet resultado = null;
+
     public static Connection obterConexao() {
-        Connection conexao = null;
+        conexao = null;
         try {
             // Carrega o driver JDBC
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -42,5 +48,40 @@ public class ConexaoBancoDeDadosMySql {
                 System.err.println("Erro ao fechar a conexão com o banco de dados: " + e.getMessage());
             }
         }
+    }
+    
+    public static boolean conectar(){
+        setConexao(BancoDeDadosMySql.obterConexao());
+        
+        if (getConexao() != null){
+            System.out.println("Conexão com o banco de dados estabelecida.");
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    public static Connection getConexao() {
+        return conexao;
+    }
+
+    public static void setConexao(Connection conexao) {
+        BancoDeDadosMySql.conexao = conexao;
+    }
+
+    public static PreparedStatement getStatement() {
+        return statement;
+    }
+
+    public static void setStatement(PreparedStatement statement) {
+        BancoDeDadosMySql.statement = statement;
+    }
+
+    public static ResultSet getResultado() {
+        return resultado;
+    }
+
+    public static void setResultado(ResultSet resultado) {
+        BancoDeDadosMySql.resultado = resultado;
     }
 }
