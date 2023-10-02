@@ -5,8 +5,8 @@
 package com.mycompany.visao.categoria.outros;
 
 import com.my.company.ferramentas.BancoDeDadosMySql;
+import com.mycompany.visao.categoria.CadCategoria;
 import com.mycompany.visao.categoria.ListCategoria;
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,6 +20,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
      */
     public MenuPrincipal() {
         initComponents();
+        
+        setLocationRelativeTo(null);
+        
+        setExtendedState(MAXIMIZED_BOTH);
         
         if (!BancoDeDadosMySql.conectar()){
             JOptionPane.showMessageDialog(null, "Não foi possível conectar ao banco de dados. O sistema será finalizado.");
@@ -36,39 +40,39 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBar1 = new javax.swing.JMenuBar();
+        menuBar = new javax.swing.JMenuBar();
         mnCadastro = new javax.swing.JMenu();
-        miCategoria = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        miCadastroCategoria = new javax.swing.JMenuItem();
+        mnConsulta = new javax.swing.JMenu();
+        miConsultaCategoria = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         mnCadastro.setText("Cadastros");
 
-        miCategoria.setText("Categoria");
-        miCategoria.addActionListener(new java.awt.event.ActionListener() {
+        miCadastroCategoria.setText("Categoria");
+        miCadastroCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                miCategoriaActionPerformed(evt);
+                miCadastroCategoriaActionPerformed(evt);
             }
         });
-        mnCadastro.add(miCategoria);
+        mnCadastro.add(miCadastroCategoria);
 
-        jMenuBar1.add(mnCadastro);
+        menuBar.add(mnCadastro);
 
-        jMenu1.setText("Consultas");
+        mnConsulta.setText("Consultas");
 
-        jMenuItem1.setText("Categoria");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        miConsultaCategoria.setText("Categoria");
+        miConsultaCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                miConsultaCategoriaActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        mnConsulta.add(miConsultaCategoria);
 
-        jMenuBar1.add(jMenu1);
+        menuBar.add(mnConsulta);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,14 +88,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void miCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCategoriaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_miCategoriaActionPerformed
+    private void miCadastroCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCadastroCategoriaActionPerformed
+        CadCategoria cadCategoria = new CadCategoria();
+        cadCategoria.setVisible(true);
+    }//GEN-LAST:event_miCadastroCategoriaActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void miConsultaCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miConsultaCategoriaActionPerformed
         ListCategoria listCategoria = new ListCategoria();
         listCategoria.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_miConsultaCategoriaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,10 +134,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem miCategoria;
+    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem miCadastroCategoria;
+    private javax.swing.JMenuItem miConsultaCategoria;
     private javax.swing.JMenu mnCadastro;
+    private javax.swing.JMenu mnConsulta;
     // End of variables declaration//GEN-END:variables
 }
