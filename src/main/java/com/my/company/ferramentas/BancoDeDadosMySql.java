@@ -16,10 +16,12 @@ import java.sql.SQLException;
  */
 public class BancoDeDadosMySql {
     // Configurações do banco de dados
-    private static final String URL = "jdbc:mysql://localhost:3306/banco_de_dados_pedidos";
+    private static final String URL = 
+        "jdbc:mysql://localhost:3306/banco_de_dados_teste?useSSL=false&allowPublicKeyRetrieval=true";
+    
     private static final String USUARIO = "root";
     private static final String SENHA = "admin";
-
+    
     private static Connection conexao = null;
     private static PreparedStatement statement = null;
     private static ResultSet resultado = null;

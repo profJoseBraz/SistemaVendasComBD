@@ -6,6 +6,7 @@ package com.mycompany.dao;
 
 import com.my.company.ferramentas.BancoDeDadosMySql;
 import com.mycompany.modelo.ModCategoria;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 /**
@@ -16,9 +17,7 @@ public class DaoCategoria extends BancoDeDadosMySql{
     
     private String sql; 
     
-    public ArrayList<ModCategoria> listar(){
-        
-        ArrayList<ModCategoria> resultado = new ArrayList<>();
+    public ResultSet listar(){
         
         try{
             sql = "SELECT * FROM CATEGORIA";
@@ -26,20 +25,10 @@ public class DaoCategoria extends BancoDeDadosMySql{
             setStatement(getConexao().prepareStatement(sql));
             
             setResultado(getStatement().executeQuery());
-
-            while(getResultado().next()){
-                ModCategoria modCategoria = new ModCategoria();
-                
-                modCategoria.setId(getResultado().getInt("id"));
-                modCategoria.setNome(getResultado().getString("nome"));
-                modCategoria.setDescricao(getResultado().getString("descricao"));
-                
-                resultado.add(modCategoria);
-            }
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
         
-        return resultado;
+        return getResultado();
     }
 }

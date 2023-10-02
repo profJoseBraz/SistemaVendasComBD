@@ -1,8 +1,12 @@
 com\mycompany\dao\DaoCategoria.class
 com\my\company\ferramentas\BancoDeDadosMySql.class
+com\mycompany\visao\categoria\ListCategoria$1.class
+com\mycompany\visao\categoria\CadCategoria.class
 com\mycompany\modelo\ModCategoria.class
+com\mycompany\visao\categoria\outros\MenuPrincipal$3.class
 com\mycompany\sistemavendas\SistemaVendas.class
-com\mycompany\visao\CadCategoria$1.class
-com\mycompany\visao\ListCategoria$1.class
-com\mycompany\visao\CadCategoria.class
-com\mycompany\visao\ListCategoria.class
+com\mycompany\visao\categoria\outros\MenuPrincipal$1.class
+com\mycompany\visao\categoria\outros\MenuPrincipal.class
+com\mycompany\visao\categoria\CadCategoria$1.class
+com\mycompany\visao\categoria\ListCategoria.class
+com\mycompany\visao\categoria\outros\MenuPrincipal$2.class
