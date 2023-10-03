@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.visao.categoria.outros;
+package com.mycompany.visao.outros;
 
 import com.my.company.ferramentas.BancoDeDadosMySql;
 import com.mycompany.visao.categoria.CadCategoria;
@@ -47,6 +47,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         miConsultaCategoria = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("SISTEMA DE VENDAS - PROGRAMADOR DE SISTEMAS 2023 | v. 1.0.0.3");
 
         mnCadastro.setText("Cadastros");
 

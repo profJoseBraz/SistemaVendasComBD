@@ -71,6 +71,7 @@ public class CadCategoria extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de categoria");
 
         jLabel1.setText("ID");
 
@@ -153,6 +154,10 @@ public class CadCategoria extends javax.swing.JFrame {
         
         if (daoCategoria.inserir(Integer.parseInt(tfId.getText()), tfNome.getText(), taDescricao.getText())){
             JOptionPane.showMessageDialog(null, "Categoria salva com sucesso!");
+            
+            tfId.setText("");
+            tfNome.setText("");
+            taDescricao.setText("");
         }else{
             JOptionPane.showMessageDialog(null, "Não foi possível salvar a categoria!");
         }
