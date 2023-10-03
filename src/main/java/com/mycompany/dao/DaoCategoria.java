@@ -40,7 +40,7 @@ public class DaoCategoria extends BancoDeDadosMySql{
     
     public ResultSet listarTodos(){
         try{
-            sql = "SELECT * FROM CATEGORIA";
+            sql = "SELECT ID, NOME, IFNULL(DESCRICAO, '') FROM CATEGORIA";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -54,7 +54,7 @@ public class DaoCategoria extends BancoDeDadosMySql{
     
     public ResultSet listarPorId(int id){
         try{
-            sql = "SELECT * FROM CATEGORIA WHERE ID = ?";
+            sql = "SELECT ID, NOME, IFNULL(DESCRICAO, '') FROM CATEGORIA WHERE ID = ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -70,7 +70,7 @@ public class DaoCategoria extends BancoDeDadosMySql{
     
     public ResultSet listarPorNome(String nome){
         try{
-            sql = "SELECT * FROM CATEGORIA WHERE NOME LIKE ?";
+            sql = "SELECT ID, NOME, IFNULL(DESCRICAO, '') FROM CATEGORIA WHERE NOME LIKE ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -86,7 +86,7 @@ public class DaoCategoria extends BancoDeDadosMySql{
     
     public ResultSet listarPorDescricao(String descricao){
         try{
-            sql = "SELECT * FROM CATEGORIA WHERE DESCRICAO LIKE ?";
+            sql = "SELECT ID, NOME, IFNULL(DESCRICAO, '') FROM CATEGORIA WHERE DESCRICAO LIKE ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
