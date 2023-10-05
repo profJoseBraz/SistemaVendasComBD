@@ -5,6 +5,7 @@
 package com.mycompany.visao.outros;
 
 import com.my.company.ferramentas.BancoDeDadosMySql;
+import com.my.company.ferramentas.Formularios;
 import com.mycompany.visao.categoria.CadCategoria;
 import com.mycompany.visao.categoria.ListCategoria;
 import javax.swing.JOptionPane;
@@ -90,13 +91,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void miCadastroCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCadastroCategoriaActionPerformed
-        CadCategoria cadCategoria = new CadCategoria();
-        cadCategoria.setVisible(true);
+//        CadCategoria cadCategoria = new CadCategoria();
+        if (Formularios.cadCategoria == null)
+            Formularios.cadCategoria = new CadCategoria();
+        
+        Formularios.cadCategoria.setVisible(true);
     }//GEN-LAST:event_miCadastroCategoriaActionPerformed
 
     private void miConsultaCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miConsultaCategoriaActionPerformed
-        ListCategoria listCategoria = new ListCategoria();
-        listCategoria.setVisible(true);
+//        ListCategoria listCategoria = new ListCategoria();
+        Formularios.listCategoria = new ListCategoria();
+        Formularios.listCategoria.setVisible(true);
     }//GEN-LAST:event_miConsultaCategoriaActionPerformed
 
     /**

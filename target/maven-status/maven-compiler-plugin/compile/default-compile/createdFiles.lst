@@ -1,6 +1,7 @@
 com\mycompany\visao\categoria\ListCategoria$1.class
 com\mycompany\visao\categoria\ListCategoria$2.class
 com\mycompany\visao\categoria\CadCategoria.class
+com\my\company\ferramentas\Constantes.class
 com\mycompany\visao\categoria\CadCategoria$1.class
 com\mycompany\visao\categoria\ListCategoria$3.class
 com\mycompany\visao\categoria\ListCategoria.class
@@ -11,7 +12,9 @@ com\my\company\ferramentas\BancoDeDadosMySql.class
 com\mycompany\visao\categoria\CadCategoria$2.class
 com\mycompany\visao\categoria\ListCategoria$4.class
 com\mycompany\modelo\ModCategoria.class
+com\mycompany\visao\categoria\CadCategoria$3.class
 com\mycompany\sistemavendas\SistemaVendas.class
 com\mycompany\visao\outros\MenuPrincipal$2.class
+com\my\company\ferramentas\Formularios.class
 com\mycompany\visao\outros\MenuPrincipal.class
 com\mycompany\visao\outros\MenuPrincipal$3.class

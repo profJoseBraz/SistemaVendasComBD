@@ -4,7 +4,9 @@
  */
 package com.mycompany.visao.categoria;
 
+import com.my.company.ferramentas.Constantes;
 import com.my.company.ferramentas.DadosTemporarios;
+import com.my.company.ferramentas.Formularios;
 import com.mycompany.dao.DaoCategoria;
 import com.mycompany.modelo.ModCategoria;
 import javax.swing.JOptionPane;
@@ -27,6 +29,12 @@ public class CadCategoria extends javax.swing.JFrame {
             int id = daoCategoria.buscarProximoId(); 
             if (id > 0)
                 tfId.setText(String.valueOf(id));
+            
+            btnAcao.setText(Constantes.BTN_SALVAR_TEXT);
+            btnExcluir.setVisible(false);
+        }else{
+            btnAcao.setText(Constantes.BTN_ALTERAR_TEXT);
+            btnExcluir.setVisible(true);
         }
         
         setLocationRelativeTo(null);
@@ -68,7 +76,8 @@ public class CadCategoria extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         taDescricao = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        btnAcao = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de categoria");
@@ -83,10 +92,17 @@ public class CadCategoria extends javax.swing.JFrame {
         taDescricao.setRows(5);
         jScrollPane1.setViewportView(taDescricao);
 
-        jButton1.setText("Salvar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAcao.setText("Salvar");
+        btnAcao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAcaoActionPerformed(evt);
+            }
+        });
+
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
             }
         });
 
@@ -100,12 +116,15 @@ public class CadCategoria extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
                     .addComponent(tfNome, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jButton1))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnAcao)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnExcluir)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -125,7 +144,9 @@ public class CadCategoria extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAcao)
+                    .addComponent(btnExcluir))
                 .addContainerGap())
         );
 
@@ -149,7 +170,24 @@ public class CadCategoria extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAcaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcaoActionPerformed
+        if (btnAcao.getText() == Constantes.BTN_SALVAR_TEXT)
+            inserir();
+        else if (btnAcao.getText() == Constantes.BTN_ALTERAR_TEXT)
+            alterar();
+    }//GEN-LAST:event_btnAcaoActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        int escolha = 
+                JOptionPane.showConfirmDialog(
+                        null, 
+                        "Deseja realmente excluir a categoria " + tfNome.getText() + "?");
+        
+        if(escolha == JOptionPane.YES_OPTION)
+            excluir();
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void inserir(){
         DaoCategoria daoCategoria = new DaoCategoria();
         
         if (daoCategoria.inserir(Integer.parseInt(tfId.getText()), tfNome.getText(), taDescricao.getText())){
@@ -161,8 +199,44 @@ public class CadCategoria extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "Não foi possível salvar a categoria!");
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+    }
+    
+    private void alterar(){
+        DaoCategoria daoCategoria = new DaoCategoria();
+        
+        if (daoCategoria.alterar(Integer.parseInt(tfId.getText()), tfNome.getText(), taDescricao.getText())){
+            JOptionPane.showMessageDialog(null, "Categoria alterada com sucesso!");
+            
+            tfId.setText("");
+            tfNome.setText("");
+            taDescricao.setText("");
+        }else{
+            JOptionPane.showMessageDialog(null, "Não foi possível alterar a categoria!");
+        }
+        
+        ((ListCategoria) Formularios.listCategoria).listarTodos();
+        
+        dispose();
+    }
+    
+    private void excluir(){
+        DaoCategoria daoCategoria = new DaoCategoria();
+        
+        if (daoCategoria.excluir(Integer.parseInt(tfId.getText()))){
+            JOptionPane.showMessageDialog(null, "Categoria " + tfNome.getText() + " excluída com sucesso!");
+            
+            tfId.setText("");
+            tfNome.setText("");
+            taDescricao.setText("");
+        }else{
+            JOptionPane.showMessageDialog(null, "Não foi possível excluir a categoria!");
+        }
+        
+        ((ListCategoria) Formularios.listCategoria).listarTodos();
+        
+        dispose();
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -200,7 +274,8 @@ public class CadCategoria extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnAcao;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

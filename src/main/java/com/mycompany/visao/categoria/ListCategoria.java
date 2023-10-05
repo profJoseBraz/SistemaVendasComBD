@@ -157,6 +157,7 @@ public class ListCategoria extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         jcbTipoFiltro = new javax.swing.JComboBox<>();
         tfFiltro = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consulta de categoria");
@@ -194,6 +195,9 @@ public class ListCategoria extends javax.swing.JFrame {
 
         jcbTipoFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TODOS", "ID", "NOME", "DESCRIÇÃO" }));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setText("Dê dois cliques no registro para editá-lo.");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -202,7 +206,10 @@ public class ListCategoria extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
-                    .addComponent(btnBuscar)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jcbTipoFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -219,7 +226,9 @@ public class ListCategoria extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBuscar)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBuscar)
+                    .addComponent(jLabel1))
                 .addContainerGap())
         );
 
@@ -261,16 +270,18 @@ public class ListCategoria extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void tableCategoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCategoriaMouseClicked
-        ModCategoria modCategoria = new ModCategoria();
-        
-        modCategoria.setId(Integer.parseInt(String.valueOf(tableCategoria.getValueAt(tableCategoria.getSelectedRow(), 0))));
-        modCategoria.setNome(String.valueOf(tableCategoria.getValueAt(tableCategoria.getSelectedRow(), 1)));
-        modCategoria.setDescricao(String.valueOf(tableCategoria.getValueAt(tableCategoria.getSelectedRow(), 2)));
-        
-        DadosTemporarios.tempObject = (ModCategoria) modCategoria;
-        
-        CadCategoria cadCategoria = new CadCategoria();
-        cadCategoria.setVisible(true);
+        if (evt.getClickCount() == 2){
+            ModCategoria modCategoria = new ModCategoria();
+
+            modCategoria.setId(Integer.parseInt(String.valueOf(tableCategoria.getValueAt(tableCategoria.getSelectedRow(), 0))));
+            modCategoria.setNome(String.valueOf(tableCategoria.getValueAt(tableCategoria.getSelectedRow(), 1)));
+            modCategoria.setDescricao(String.valueOf(tableCategoria.getValueAt(tableCategoria.getSelectedRow(), 2)));
+
+            DadosTemporarios.tempObject = (ModCategoria) modCategoria;
+
+            CadCategoria cadCategoria = new CadCategoria();
+            cadCategoria.setVisible(true);
+        }
     }//GEN-LAST:event_tableCategoriaMouseClicked
 
     /**
@@ -310,6 +321,7 @@ public class ListCategoria extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> jcbTipoFiltro;
