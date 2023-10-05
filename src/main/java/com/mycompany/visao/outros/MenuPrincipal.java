@@ -8,6 +8,7 @@ import com.my.company.ferramentas.BancoDeDadosMySql;
 import com.my.company.ferramentas.Formularios;
 import com.mycompany.visao.categoria.CadCategoria;
 import com.mycompany.visao.categoria.ListCategoria;
+import com.mycompany.visao.cidade.CadCidade;
 import javax.swing.JOptionPane;
 
 /**
@@ -44,6 +45,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         mnCadastro = new javax.swing.JMenu();
         miCadastroCategoria = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         mnConsulta = new javax.swing.JMenu();
         miConsultaCategoria = new javax.swing.JMenuItem();
 
@@ -59,6 +61,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         mnCadastro.add(miCadastroCategoria);
+
+        jMenuItem1.setText("Cidade");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        mnCadastro.add(jMenuItem1);
 
         menuBar.add(mnCadastro);
 
@@ -100,9 +110,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void miConsultaCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miConsultaCategoriaActionPerformed
 //        ListCategoria listCategoria = new ListCategoria();
-        Formularios.listCategoria = new ListCategoria();
+        if (Formularios.listCategoria == null)
+            Formularios.listCategoria = new ListCategoria();
+        
         Formularios.listCategoria.setVisible(true);
     }//GEN-LAST:event_miConsultaCategoriaActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        if (Formularios.cadCategoria == null)
+            Formularios.cadCategoria = new CadCidade();
+        
+        Formularios.cadCategoria.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,6 +159,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem miCadastroCategoria;
     private javax.swing.JMenuItem miConsultaCategoria;

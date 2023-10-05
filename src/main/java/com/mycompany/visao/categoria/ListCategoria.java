@@ -6,6 +6,7 @@ package com.mycompany.visao.categoria;
 
 import com.my.company.ferramentas.BancoDeDadosMySql;
 import com.my.company.ferramentas.DadosTemporarios;
+import com.my.company.ferramentas.Formularios;
 import com.mycompany.dao.DaoCategoria;
 import com.mycompany.modelo.ModCategoria;
 import java.sql.ResultSet;
@@ -58,12 +59,8 @@ public class ListCategoria extends javax.swing.JFrame {
     public void listarPorId(int pId){
         try{
             //Define o model da tabela.
-            DefaultTableModel defaultTableModel = new DefaultTableModel();
+            DefaultTableModel defaultTableModel = (DefaultTableModel) tableCategoria.getModel();
 
-            defaultTableModel.addColumn("ID");
-            defaultTableModel.addColumn("NOME");
-            defaultTableModel.addColumn("DESCRIÇÃO");
-            
             tableCategoria.setModel(defaultTableModel);
 
             DaoCategoria daoCategoria = new DaoCategoria();
@@ -87,11 +84,7 @@ public class ListCategoria extends javax.swing.JFrame {
     public void listarPorNome(String pNome){
         try{
             //Define o model da tabela.
-            DefaultTableModel defaultTableModel = new DefaultTableModel();
-
-            defaultTableModel.addColumn("ID");
-            defaultTableModel.addColumn("NOME");
-            defaultTableModel.addColumn("DESCRIÇÃO");
+            DefaultTableModel defaultTableModel = (DefaultTableModel) tableCategoria.getModel();
             
             tableCategoria.setModel(defaultTableModel);
 
@@ -116,11 +109,7 @@ public class ListCategoria extends javax.swing.JFrame {
     public void listarPorDescricao(String pDescricao){
         try{
             //Define o model da tabela.
-            DefaultTableModel defaultTableModel = new DefaultTableModel();
-
-            defaultTableModel.addColumn("ID");
-            defaultTableModel.addColumn("NOME");
-            defaultTableModel.addColumn("DESCRIÇÃO");
+            DefaultTableModel defaultTableModel = (DefaultTableModel) tableCategoria.getModel();
             
             tableCategoria.setModel(defaultTableModel);
 
@@ -161,6 +150,11 @@ public class ListCategoria extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consulta de categoria");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         tableCategoria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -283,6 +277,10 @@ public class ListCategoria extends javax.swing.JFrame {
             cadCategoria.setVisible(true);
         }
     }//GEN-LAST:event_tableCategoriaMouseClicked
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        Formularios.listCategoria = null;
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments

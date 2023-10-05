@@ -11,6 +11,12 @@ import javax.swing.JFrame;
  * @author 10156
  */
 public class Formularios {
+    //Categoria
     public static JFrame cadCategoria;
     public static JFrame listCategoria;
+    
+    //Cidade
+    public static JFrame cadCidade;
+    public static JFrame listCidade;
+    
 }

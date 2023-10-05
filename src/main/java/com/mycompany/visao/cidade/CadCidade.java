@@ -2,31 +2,33 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.visao.categoria;
+package com.mycompany.visao.cidade;
 
 import com.my.company.ferramentas.Constantes;
 import com.my.company.ferramentas.DadosTemporarios;
-import com.my.company.ferramentas.Formularios;
-import com.mycompany.dao.DaoCategoria;
+import com.mycompany.dao.DaoCidade;
+import com.mycompany.dao.DaoEstado;
 import com.mycompany.modelo.ModCategoria;
+import com.mycompany.modelo.ModCidade;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author jose_
+ * @author 10156
  */
-public class CadCategoria extends javax.swing.JFrame {
+public class CadCidade extends javax.swing.JFrame {
 
     /**
-     * Creates new form cadCategoria
+     * Creates new form CadCidade
      */
-    public CadCategoria() {
+    public CadCidade() {
         initComponents();
         
         if(!existeDadosTemporarios()){
-            DaoCategoria daoCategoria = new DaoCategoria();
+            DaoCidade daoCidade = new DaoCidade();
 
-            int id = daoCategoria.buscarProximoId(); 
+            int id = daoCidade.buscarProximoId(); 
             if (id > 0)
                 tfId.setText(String.valueOf(id));
             
@@ -37,26 +39,74 @@ public class CadCategoria extends javax.swing.JFrame {
             btnExcluir.setVisible(true);
         }
         
+        carregarEstados();
+        
+        recuperaIdEstado();
+        
         setLocationRelativeTo(null);
         
         tfId.setEnabled(false);
+        
+        tfIdEstado.setVisible(false);
     }
-    
+
     private Boolean existeDadosTemporarios(){        
-        if(DadosTemporarios.tempObject instanceof ModCategoria){
-            int id = ((ModCategoria) DadosTemporarios.tempObject).getId();
-            String nome = ((ModCategoria) DadosTemporarios.tempObject).getNome();
-            String descricao = ((ModCategoria) DadosTemporarios.tempObject).getDescricao();
+        if(DadosTemporarios.tempObject instanceof ModCidade){
+            int id = ((ModCidade) DadosTemporarios.tempObject).getId();
+            int idEstado = ((ModCidade) DadosTemporarios.tempObject).getIdEstado();
+            String nome = ((ModCidade) DadosTemporarios.tempObject).getNome();
             
             tfId.setText(String.valueOf(id));
+            tfIdEstado.setText(String.valueOf(idEstado));
             tfNome.setText(nome);
-            taDescricao.setText(descricao);
         
             DadosTemporarios.tempObject = null;
             
             return true;
         }else
             return false;
+    }
+    
+    private void inserir(){
+        DaoCidade daoCidade = new DaoCidade();
+        
+        if (daoCidade.inserir(Integer.parseInt(tfId.getText()), Integer.parseInt(tfIdEstado.getText()), tfNome.getText())){
+            JOptionPane.showMessageDialog(null, "Cidade salva com sucesso!");
+            
+            tfId.setText(String.valueOf(daoCidade.buscarProximoId()));
+            tfNome.setText("");
+        }else{
+            JOptionPane.showMessageDialog(null, "Não foi possível salvar a cidade!");
+        }
+    }
+    
+    private void alterar(){
+    
+    }
+    
+    private void carregarEstados(){
+        try{
+            DaoEstado daoEstado = new DaoEstado();
+
+            ResultSet resultSet = daoEstado.listarTodos();
+
+            while(resultSet.next()){
+                jcbEstado.addItem(resultSet.getString("NOME"));
+            }
+        }catch(Exception e){
+            
+        }
+    }
+    
+    private void recuperaIdEstado(){
+        try{
+            DaoEstado daoEstado = new DaoEstado();
+            ResultSet resultSet = daoEstado.listarPorNome(jcbEstado.getSelectedItem().toString());
+            resultSet.next();
+            tfIdEstado.setText(resultSet.getString("ID"));
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }
     
     /**
@@ -74,28 +124,30 @@ public class CadCategoria extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         tfNome = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        taDescricao = new javax.swing.JTextArea();
+        jcbEstado = new javax.swing.JComboBox<>();
         btnAcao = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
+        tfIdEstado = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Cadastro de categoria");
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
-            }
-        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("ID");
 
         jLabel2.setText("Nome");
 
-        jLabel3.setText("Descrição");
+        tfNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfNomeActionPerformed(evt);
+            }
+        });
 
-        taDescricao.setColumns(20);
-        taDescricao.setRows(5);
-        jScrollPane1.setViewportView(taDescricao);
+        jLabel3.setText("Estado");
+
+        jcbEstado.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcbEstadoItemStateChanged(evt);
+            }
+        });
 
         btnAcao.setText("Salvar");
         btnAcao.addActionListener(new java.awt.event.ActionListener() {
@@ -105,9 +157,10 @@ public class CadCategoria extends javax.swing.JFrame {
         });
 
         btnExcluir.setText("Excluir");
-        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+
+        tfIdEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluirActionPerformed(evt);
+                tfIdEstadoActionPerformed(evt);
             }
         });
 
@@ -115,22 +168,25 @@ public class CadCategoria extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
-                    .addComponent(tfNome, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfNome)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnAcao)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnExcluir)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(btnExcluir))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jcbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfIdEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 301, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -141,14 +197,16 @@ public class CadCategoria extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jcbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfIdEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAcao)
                     .addComponent(btnExcluir))
@@ -159,7 +217,7 @@ public class CadCategoria extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -175,6 +233,14 @@ public class CadCategoria extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tfNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfNomeActionPerformed
+
+    private void tfIdEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdEstadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfIdEstadoActionPerformed
+
     private void btnAcaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcaoActionPerformed
         if (btnAcao.getText() == Constantes.BTN_SALVAR_TEXT)
             inserir();
@@ -182,70 +248,10 @@ public class CadCategoria extends javax.swing.JFrame {
             alterar();
     }//GEN-LAST:event_btnAcaoActionPerformed
 
-    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        int escolha = 
-                JOptionPane.showConfirmDialog(
-                        null, 
-                        "Deseja realmente excluir a categoria " + tfNome.getText() + "?");
-        
-        if(escolha == JOptionPane.YES_OPTION)
-            excluir();
-    }//GEN-LAST:event_btnExcluirActionPerformed
+    private void jcbEstadoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbEstadoItemStateChanged
+        recuperaIdEstado();
+    }//GEN-LAST:event_jcbEstadoItemStateChanged
 
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        Formularios.cadCategoria = null;
-    }//GEN-LAST:event_formWindowClosed
-
-    private void inserir(){
-        DaoCategoria daoCategoria = new DaoCategoria();
-        
-        if (daoCategoria.inserir(Integer.parseInt(tfId.getText()), tfNome.getText(), taDescricao.getText())){
-            JOptionPane.showMessageDialog(null, "Categoria salva com sucesso!");
-            
-            tfId.setText(String.valueOf(daoCategoria.buscarProximoId()));
-            tfNome.setText("");
-            taDescricao.setText("");
-        }else{
-            JOptionPane.showMessageDialog(null, "Não foi possível salvar a categoria!");
-        }
-    }
-    
-    private void alterar(){
-        DaoCategoria daoCategoria = new DaoCategoria();
-        
-        if (daoCategoria.alterar(Integer.parseInt(tfId.getText()), tfNome.getText(), taDescricao.getText())){
-            JOptionPane.showMessageDialog(null, "Categoria alterada com sucesso!");
-            
-            tfId.setText("");
-            tfNome.setText("");
-            taDescricao.setText("");
-        }else{
-            JOptionPane.showMessageDialog(null, "Não foi possível alterar a categoria!");
-        }
-        
-        ((ListCategoria) Formularios.listCategoria).listarTodos();
-        
-        dispose();
-    }
-    
-    private void excluir(){
-        DaoCategoria daoCategoria = new DaoCategoria();
-        
-        if (daoCategoria.excluir(Integer.parseInt(tfId.getText()))){
-            JOptionPane.showMessageDialog(null, "Categoria " + tfNome.getText() + " excluída com sucesso!");
-            
-            tfId.setText("");
-            tfNome.setText("");
-            taDescricao.setText("");
-        }else{
-            JOptionPane.showMessageDialog(null, "Não foi possível excluir a categoria!");
-        }
-        
-        ((ListCategoria) Formularios.listCategoria).listarTodos();
-        
-        dispose();
-    }
-    
     /**
      * @param args the command line arguments
      */
@@ -263,21 +269,20 @@ public class CadCategoria extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadCidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadCidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadCidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadCidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadCategoria().setVisible(true);
+                new CadCidade().setVisible(true);
             }
         });
     }
@@ -289,9 +294,9 @@ public class CadCategoria extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea taDescricao;
+    private javax.swing.JComboBox<String> jcbEstado;
     private javax.swing.JTextField tfId;
+    private javax.swing.JTextField tfIdEstado;
     private javax.swing.JTextField tfNome;
     // End of variables declaration//GEN-END:variables
 }
