@@ -1,5 +1,6 @@
 com\mycompany\visao\categoria\ListCategoria$2.class
 com\mycompany\visao\categoria\CadCategoria.class
+com\mycompany\visao\outros\MenuPrincipal$5.class
 com\mycompany\visao\cidade\CadCidade$1.class
 com\mycompany\visao\categoria\ListCategoria.class
 com\mycompany\ferramentas\Formularios.class
@@ -10,6 +11,7 @@ com\mycompany\visao\categoria\CadCategoria$2.class
 com\mycompany\ferramentas\BancoDeDadosMySql.class
 com\mycompany\visao\categoria\ListCategoria$5.class
 com\mycompany\visao\outros\MenuPrincipal$4.class
+com\mycompany\visao\cidade\ListCidade$2.class
 com\mycompany\visao\outros\MenuPrincipal$2.class
 com\mycompany\visao\categoria\CadCategoria$4.class
 com\mycompany\ferramentas\Constantes.class
