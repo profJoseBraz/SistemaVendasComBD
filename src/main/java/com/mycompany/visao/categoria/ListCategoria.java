@@ -4,9 +4,9 @@
  */
 package com.mycompany.visao.categoria;
 
-import com.my.company.ferramentas.BancoDeDadosMySql;
-import com.my.company.ferramentas.DadosTemporarios;
-import com.my.company.ferramentas.Formularios;
+import com.mycompany.ferramentas.BancoDeDadosMySql;
+import com.mycompany.ferramentas.DadosTemporarios;
+import com.mycompany.ferramentas.Formularios;
 import com.mycompany.dao.DaoCategoria;
 import com.mycompany.modelo.ModCategoria;
 import java.sql.ResultSet;

@@ -4,8 +4,8 @@
  */
 package com.mycompany.visao.outros;
 
-import com.my.company.ferramentas.BancoDeDadosMySql;
-import com.my.company.ferramentas.Formularios;
+import com.mycompany.ferramentas.BancoDeDadosMySql;
+import com.mycompany.ferramentas.Formularios;
 import com.mycompany.visao.categoria.CadCategoria;
 import com.mycompany.visao.categoria.ListCategoria;
 import com.mycompany.visao.cidade.CadCidade;

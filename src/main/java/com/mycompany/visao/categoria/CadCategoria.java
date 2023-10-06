@@ -4,9 +4,10 @@
  */
 package com.mycompany.visao.categoria;
 
-import com.my.company.ferramentas.Constantes;
-import com.my.company.ferramentas.DadosTemporarios;
-import com.my.company.ferramentas.Formularios;
+import com.mycompany.controle.ConCategoria;
+import com.mycompany.ferramentas.Constantes;
+import com.mycompany.ferramentas.DadosTemporarios;
+import com.mycompany.ferramentas.Formularios;
 import com.mycompany.dao.DaoCategoria;
 import com.mycompany.modelo.ModCategoria;
 import javax.swing.JOptionPane;
@@ -23,7 +24,9 @@ public class CadCategoria extends javax.swing.JFrame {
     public CadCategoria() {
         initComponents();
         
-        if(!existeDadosTemporarios()){
+        ConCategoria conCategoria = new ConCategoria();
+        
+        if(!conCategoria.existeDadosTemporarios()){
             DaoCategoria daoCategoria = new DaoCategoria();
 
             int id = daoCategoria.buscarProximoId(); 
@@ -33,6 +36,12 @@ public class CadCategoria extends javax.swing.JFrame {
             btnAcao.setText(Constantes.BTN_SALVAR_TEXT);
             btnExcluir.setVisible(false);
         }else{
+            tfId.setText(String.valueOf(((ModCategoria) DadosTemporarios.tempObject).getId()));
+            tfNome.setText(((ModCategoria) DadosTemporarios.tempObject).getNome());
+            taDescricao.setText(((ModCategoria) DadosTemporarios.tempObject).getDescricao());
+            
+            DadosTemporarios.tempObject = null;
+            
             btnAcao.setText(Constantes.BTN_ALTERAR_TEXT);
             btnExcluir.setVisible(true);
         }
@@ -40,23 +49,6 @@ public class CadCategoria extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         
         tfId.setEnabled(false);
-    }
-    
-    private Boolean existeDadosTemporarios(){        
-        if(DadosTemporarios.tempObject instanceof ModCategoria){
-            int id = ((ModCategoria) DadosTemporarios.tempObject).getId();
-            String nome = ((ModCategoria) DadosTemporarios.tempObject).getNome();
-            String descricao = ((ModCategoria) DadosTemporarios.tempObject).getDescricao();
-            
-            tfId.setText(String.valueOf(id));
-            tfNome.setText(nome);
-            taDescricao.setText(descricao);
-        
-            DadosTemporarios.tempObject = null;
-            
-            return true;
-        }else
-            return false;
     }
     
     /**
@@ -176,75 +168,38 @@ public class CadCategoria extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAcaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcaoActionPerformed
-        if (btnAcao.getText() == Constantes.BTN_SALVAR_TEXT)
-            inserir();
-        else if (btnAcao.getText() == Constantes.BTN_ALTERAR_TEXT)
-            alterar();
+        ConCategoria conCategoria = new ConCategoria();
+        DaoCategoria daoCategoria = new DaoCategoria();
+        
+        if (btnAcao.getText() == Constantes.BTN_SALVAR_TEXT){
+            conCategoria.inserir(Integer.parseInt(tfId.getText()), tfNome.getText(), taDescricao.getText());
+            
+            tfId.setText(String.valueOf(daoCategoria.buscarProximoId()));
+            tfNome.setText("");
+            taDescricao.setText("");
+        }
+        else if (btnAcao.getText() == Constantes.BTN_ALTERAR_TEXT){
+            conCategoria.alterar(Integer.parseInt(tfId.getText()), tfNome.getText(), taDescricao.getText());
+            ((ListCategoria) Formularios.listCategoria).listarTodos();
+            dispose();
+        }
     }//GEN-LAST:event_btnAcaoActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        ConCategoria conCategoria = new ConCategoria();
+        
         int escolha = 
                 JOptionPane.showConfirmDialog(
                         null, 
                         "Deseja realmente excluir a categoria " + tfNome.getText() + "?");
         
         if(escolha == JOptionPane.YES_OPTION)
-            excluir();
+            conCategoria.excluir(Integer.parseInt(tfId.getText()));
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         Formularios.cadCategoria = null;
     }//GEN-LAST:event_formWindowClosed
-
-    private void inserir(){
-        DaoCategoria daoCategoria = new DaoCategoria();
-        
-        if (daoCategoria.inserir(Integer.parseInt(tfId.getText()), tfNome.getText(), taDescricao.getText())){
-            JOptionPane.showMessageDialog(null, "Categoria salva com sucesso!");
-            
-            tfId.setText(String.valueOf(daoCategoria.buscarProximoId()));
-            tfNome.setText("");
-            taDescricao.setText("");
-        }else{
-            JOptionPane.showMessageDialog(null, "Não foi possível salvar a categoria!");
-        }
-    }
-    
-    private void alterar(){
-        DaoCategoria daoCategoria = new DaoCategoria();
-        
-        if (daoCategoria.alterar(Integer.parseInt(tfId.getText()), tfNome.getText(), taDescricao.getText())){
-            JOptionPane.showMessageDialog(null, "Categoria alterada com sucesso!");
-            
-            tfId.setText("");
-            tfNome.setText("");
-            taDescricao.setText("");
-        }else{
-            JOptionPane.showMessageDialog(null, "Não foi possível alterar a categoria!");
-        }
-        
-        ((ListCategoria) Formularios.listCategoria).listarTodos();
-        
-        dispose();
-    }
-    
-    private void excluir(){
-        DaoCategoria daoCategoria = new DaoCategoria();
-        
-        if (daoCategoria.excluir(Integer.parseInt(tfId.getText()))){
-            JOptionPane.showMessageDialog(null, "Categoria " + tfNome.getText() + " excluída com sucesso!");
-            
-            tfId.setText("");
-            tfNome.setText("");
-            taDescricao.setText("");
-        }else{
-            JOptionPane.showMessageDialog(null, "Não foi possível excluir a categoria!");
-        }
-        
-        ((ListCategoria) Formularios.listCategoria).listarTodos();
-        
-        dispose();
-    }
     
     /**
      * @param args the command line arguments
