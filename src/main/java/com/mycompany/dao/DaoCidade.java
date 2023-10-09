@@ -209,7 +209,7 @@ public class DaoCidade extends BancoDeDadosMySql{
         int id = -1;
         
         try{
-            sql = "SELECT MAX(ID) + 1 FROM CIDADE";
+            sql = "SELECT IFNULL(MAX(ID), 0) + 1 FROM CIDADE";
             
             setStatement(getConexao().prepareStatement(sql));
             

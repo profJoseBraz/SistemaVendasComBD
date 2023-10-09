@@ -8,6 +8,7 @@ import com.mycompany.ferramentas.Constantes;
 import com.mycompany.ferramentas.DadosTemporarios;
 import com.mycompany.dao.DaoCidade;
 import com.mycompany.dao.DaoEstado;
+import com.mycompany.ferramentas.Formularios;
 import com.mycompany.modelo.ModCategoria;
 import com.mycompany.modelo.ModCidade;
 import java.sql.ResultSet;
@@ -25,6 +26,8 @@ public class CadCidade extends javax.swing.JFrame {
     public CadCidade() {
         initComponents();
         
+        carregarEstados();
+        
         if(!existeDadosTemporarios()){
             DaoCidade daoCidade = new DaoCidade();
 
@@ -38,8 +41,6 @@ public class CadCidade extends javax.swing.JFrame {
             btnAcao.setText(Constantes.BTN_ALTERAR_TEXT);
             btnExcluir.setVisible(true);
         }
-        
-        carregarEstados();
         
         recuperaIdEstado();
         
@@ -59,6 +60,8 @@ public class CadCidade extends javax.swing.JFrame {
             tfId.setText(String.valueOf(id));
             tfIdEstado.setText(String.valueOf(idEstado));
             tfNome.setText(nome);
+            
+            jcbEstado.setSelectedIndex(idEstado - 1);
         
             DadosTemporarios.tempObject = null;
             
@@ -109,6 +112,17 @@ public class CadCidade extends javax.swing.JFrame {
         }
     }
     
+    private void recuperaUfEstado(){
+        try{
+            DaoEstado daoEstado = new DaoEstado();
+            ResultSet resultSet = daoEstado.listarPorNome(jcbEstado.getSelectedItem().toString());
+            resultSet.next();
+            tfUf.setText(resultSet.getString("UF"));
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -128,9 +142,15 @@ public class CadCidade extends javax.swing.JFrame {
         btnAcao = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         tfIdEstado = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
+        tfUf = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de cidade");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jLabel1.setText("ID");
 
@@ -186,7 +206,7 @@ public class CadCidade extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jcbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tfUf, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(tfIdEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 224, Short.MAX_VALUE)))
@@ -205,7 +225,7 @@ public class CadCidade extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jcbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfIdEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfUf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -254,7 +274,12 @@ public class CadCidade extends javax.swing.JFrame {
 
     private void jcbEstadoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbEstadoItemStateChanged
         recuperaIdEstado();
+        recuperaUfEstado();
     }//GEN-LAST:event_jcbEstadoItemStateChanged
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        Formularios.cadCidade = null;
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
@@ -298,10 +323,10 @@ public class CadCidade extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JComboBox<String> jcbEstado;
     private javax.swing.JTextField tfId;
     private javax.swing.JTextField tfIdEstado;
     private javax.swing.JTextField tfNome;
+    private javax.swing.JTextField tfUf;
     // End of variables declaration//GEN-END:variables
 }

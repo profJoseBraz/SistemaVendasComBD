@@ -16,7 +16,6 @@ com\mycompany\visao\outros\MenuPrincipal$2.class
 com\mycompany\visao\categoria\CadCategoria$4.class
 com\mycompany\ferramentas\Constantes.class
 com\mycompany\modelo\ModEstado.class
-com\mycompany\controle\ConCategoria.class
 com\mycompany\visao\categoria\ListCategoria$1.class
 com\mycompany\visao\cidade\CadCidade.class
 com\mycompany\visao\cidade\CadCidade$2.class
@@ -25,8 +24,11 @@ com\mycompany\visao\categoria\CadCategoria$1.class
 com\mycompany\visao\categoria\ListCategoria$3.class
 com\mycompany\visao\outros\MenuPrincipal$1.class
 com\mycompany\ferramentas\DadosTemporarios.class
+com\mycompany\visao\cidade\ListCidade$3.class
 com\mycompany\visao\categoria\ListCategoria$4.class
 com\mycompany\visao\cidade\ListCidade.class
+com\mycompany\visao\cidade\CadCidade$6.class
+com\mycompany\visao\cidade\ListCidade$4.class
 com\mycompany\modelo\ModCategoria.class
 com\mycompany\visao\categoria\CadCategoria$3.class
 com\mycompany\sistemavendas\SistemaVendas.class

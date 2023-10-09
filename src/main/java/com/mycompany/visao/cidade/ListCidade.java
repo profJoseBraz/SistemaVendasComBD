@@ -6,6 +6,11 @@ package com.mycompany.visao.cidade;
 
 import com.mycompany.dao.DaoCategoria;
 import com.mycompany.dao.DaoCidade;
+import com.mycompany.dao.DaoEstado;
+import com.mycompany.ferramentas.DadosTemporarios;
+import com.mycompany.modelo.ModCategoria;
+import com.mycompany.modelo.ModCidade;
+import com.mycompany.visao.categoria.CadCategoria;
 import java.sql.ResultSet;
 import javax.swing.table.DefaultTableModel;
 
@@ -67,7 +72,8 @@ public class ListCidade extends javax.swing.JFrame {
         tableCidade = new javax.swing.JTable();
         btnBuscar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Consulta de cidade");
 
         jcbTipoFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "ESTADO", "CIDADE" }));
 
@@ -81,7 +87,20 @@ public class ListCidade extends javax.swing.JFrame {
             new String [] {
                 "ID", "ESTADO", "CIDADE"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableCidade.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableCidadeMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tableCidade);
 
         btnBuscar.setText("Buscar");
@@ -145,6 +164,33 @@ public class ListCidade extends javax.swing.JFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void tableCidadeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCidadeMouseClicked
+        try{
+            if (evt.getClickCount() == 2){
+                ModCidade modCidade = new ModCidade();
+
+                modCidade.setId(Integer.parseInt(String.valueOf(tableCidade.getValueAt(tableCidade.getSelectedRow(), 0))));
+                modCidade.setNome(String.valueOf(tableCidade.getValueAt(tableCidade.getSelectedRow(), 2)));
+
+                DaoEstado daoEstado = new DaoEstado();
+                ResultSet resultSet = daoEstado.listarPorNome(String.valueOf(tableCidade.getValueAt(tableCidade.getSelectedRow(), 1)));
+
+                int idEstado = -1;
+                while(resultSet.next())
+                    idEstado = resultSet.getInt("ID");
+
+                modCidade.setIdEstado(idEstado);
+                
+                DadosTemporarios.tempObject = (ModCidade) modCidade;
+
+                CadCidade cadCidade = new CadCidade();
+                cadCidade.setVisible(true);
+            }
+        }catch(Exception e){
+            System.err.println(e.getMessage());
+        }
+    }//GEN-LAST:event_tableCidadeMouseClicked
 
     /**
      * @param args the command line arguments

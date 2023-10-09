@@ -47,9 +47,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mnCadastro = new javax.swing.JMenu();
         miCadastroCategoria = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         mnConsulta = new javax.swing.JMenu();
         miConsultaCategoria = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SISTEMA DE VENDAS - PROGRAMADOR DE SISTEMAS 2023 | v. 1.0.0.3");
@@ -72,6 +74,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         mnCadastro.add(jMenuItem1);
 
+        jMenuItem3.setText("Pais");
+        mnCadastro.add(jMenuItem3);
+
         menuBar.add(mnCadastro);
 
         mnConsulta.setText("Consultas");
@@ -84,13 +89,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         mnConsulta.add(miConsultaCategoria);
 
-        jMenuItem2.setText("jMenuItem2");
+        jMenuItem2.setText("Cidade");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
             }
         });
         mnConsulta.add(jMenuItem2);
+
+        jMenuItem4.setText("Pais");
+        mnConsulta.add(jMenuItem4);
 
         menuBar.add(mnConsulta);
 
@@ -127,10 +135,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_miConsultaCategoriaActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        if (Formularios.cadCategoria == null)
-            Formularios.cadCategoria = new CadCidade();
+        if (Formularios.cadCidade == null)
+            Formularios.cadCidade = new CadCidade();
         
-        Formularios.cadCategoria.setVisible(true);
+        Formularios.cadCidade.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -178,6 +186,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem miCadastroCategoria;
     private javax.swing.JMenuItem miConsultaCategoria;

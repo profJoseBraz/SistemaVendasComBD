@@ -50,4 +50,21 @@ public class DaoEstado {
         
         return getResultado();
     }
+    
+    public ResultSet listarPorId(int id){
+        try{
+            sql = 
+                "SELECT ID, ID_PAIS, NOME, UF FROM ESTADO WHERE ID = ?";
+            
+            setStatement(getConexao().prepareStatement(sql));
+            
+            getStatement().setInt(1, id);
+            
+            setResultado(getStatement().executeQuery());
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        
+        return getResultado();
+    }
 }
