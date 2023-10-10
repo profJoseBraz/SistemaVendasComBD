@@ -1,6 +1,10 @@
 D:\Projetos Dev\SistemaVendas\src\main\java\com\mycompany\dao\DaoCategoria.java
+D:\Projetos Dev\SistemaVendas\src\main\java\com\mycompany\visao\pais\CadPais.java
+D:\Projetos Dev\SistemaVendas\src\main\java\com\mycompany\visao\pais\ListPais.java
 D:\Projetos Dev\SistemaVendas\src\main\java\com\mycompany\sistemavendas\SistemaVendas.java
 D:\Projetos Dev\SistemaVendas\src\main\java\com\mycompany\visao\outros\MenuPrincipal.java
+D:\Projetos Dev\SistemaVendas\src\main\java\com\mycompany\dao\DaoPais.java
+D:\Projetos Dev\SistemaVendas\src\main\java\com\mycompany\modelo\ModPais.java
 D:\Projetos Dev\SistemaVendas\src\main\java\com\mycompany\visao\cidade\ListCidade.java
 D:\Projetos Dev\SistemaVendas\src\main\java\com\mycompany\ferramentas\DadosTemporarios.java
 D:\Projetos Dev\SistemaVendas\src\main\java\com\mycompany\modelo\ModCidade.java

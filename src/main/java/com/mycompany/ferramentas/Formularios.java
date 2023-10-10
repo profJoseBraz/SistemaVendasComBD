@@ -19,4 +19,8 @@ public class Formularios {
     public static JFrame cadCidade;
     public static JFrame listCidade;
     
+    //Pais
+    public static JFrame cadPais;
+    public static JFrame listPais;
+    
 }

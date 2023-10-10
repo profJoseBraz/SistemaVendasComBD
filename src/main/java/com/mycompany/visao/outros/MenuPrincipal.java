@@ -10,6 +10,8 @@ import com.mycompany.visao.categoria.CadCategoria;
 import com.mycompany.visao.categoria.ListCategoria;
 import com.mycompany.visao.cidade.CadCidade;
 import com.mycompany.visao.cidade.ListCidade;
+import com.mycompany.visao.pais.CadPais;
+import com.mycompany.visao.pais.ListPais;
 import javax.swing.JOptionPane;
 
 /**
@@ -75,6 +77,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mnCadastro.add(jMenuItem1);
 
         jMenuItem3.setText("Pais");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         mnCadastro.add(jMenuItem3);
 
         menuBar.add(mnCadastro);
@@ -98,6 +105,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mnConsulta.add(jMenuItem2);
 
         jMenuItem4.setText("Pais");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         mnConsulta.add(jMenuItem4);
 
         menuBar.add(mnConsulta);
@@ -147,6 +159,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
         Formularios.listCidade.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        if (Formularios.cadPais == null)
+            Formularios.cadPais = new CadPais();
+        
+        Formularios.cadPais.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        if (Formularios.listPais == null)
+            Formularios.listPais = new ListPais();
+        
+        Formularios.listPais.setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments

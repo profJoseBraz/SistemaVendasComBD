@@ -137,7 +137,7 @@ public class DaoCidade extends BancoDeDadosMySql{
                 " JOIN ESTADO EST ON        " +
                 "   EST.ID = CID.ID_ESTADO  " +
                 " WHERE                     " +
-                "   CID.NOME = ?            ";
+                "   CID.NOME LIKE ?         ";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -151,7 +151,7 @@ public class DaoCidade extends BancoDeDadosMySql{
         return getResultado();
     }
     
-    public ResultSet listarPorEstado(String descricao){
+    public ResultSet listarPorEstado(String estado){
         try{
             sql = 
                 " SELECT                    " +
@@ -164,11 +164,11 @@ public class DaoCidade extends BancoDeDadosMySql{
                 " JOIN ESTADO EST ON        " +
                 "   EST.ID = CID.ID_ESTADO  " +
                 " WHERE                     " +
-                "   EST.NOME = ?            ";;
+                "   EST.NOME LIKE ?         ";;
             
             setStatement(getConexao().prepareStatement(sql));
             
-            getStatement().setString(1, descricao + "%");
+            getStatement().setString(1, estado + "%");
             
             setResultado(getStatement().executeQuery());
         }catch(Exception e){

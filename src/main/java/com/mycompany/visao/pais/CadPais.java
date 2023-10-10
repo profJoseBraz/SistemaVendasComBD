@@ -2,41 +2,35 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.visao.cidade;
+package com.mycompany.visao.pais;
 
 import com.mycompany.dao.DaoCategoria;
+import com.mycompany.dao.DaoPais;
 import com.mycompany.ferramentas.Constantes;
 import com.mycompany.ferramentas.DadosTemporarios;
-import com.mycompany.dao.DaoCidade;
-import com.mycompany.dao.DaoEstado;
-import com.mycompany.dao.DaoPais;
 import com.mycompany.ferramentas.Formularios;
 import com.mycompany.modelo.ModCategoria;
-import com.mycompany.modelo.ModCidade;
+import com.mycompany.modelo.ModPais;
 import com.mycompany.visao.categoria.ListCategoria;
-import com.mycompany.visao.pais.ListPais;
-import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author 10156
+ * @author jose_
  */
-public class CadCidade extends javax.swing.JFrame {
+public class CadPais extends javax.swing.JFrame {
 
     /**
-     * Creates new form CadCidade
+     * Creates new form CadPais
      */
-    public CadCidade() {
+    public CadPais() {
         initComponents();
         
-        carregarEstados();
-        
         if(!existeDadosTemporarios()){
-            DaoCidade daoCidade = new DaoCidade();
+            DaoPais daoPais = new DaoPais();
 
-            int id = daoCidade.buscarProximoId(); 
-            if (id > 0)
+            int id = daoPais.buscarProximoId(); 
+            if (id >= 0)
                 tfId.setText(String.valueOf(id));
             
             btnAcao.setText(Constantes.BTN_SALVAR_TEXT);
@@ -46,27 +40,19 @@ public class CadCidade extends javax.swing.JFrame {
             btnExcluir.setVisible(true);
         }
         
-        recuperaIdEstado();
-        
         setLocationRelativeTo(null);
         
         tfId.setEnabled(false);
-        
-        tfIdEstado.setVisible(false);
     }
 
     private Boolean existeDadosTemporarios(){        
-        if(DadosTemporarios.tempObject instanceof ModCidade){
-            int id = ((ModCidade) DadosTemporarios.tempObject).getId();
-            int idEstado = ((ModCidade) DadosTemporarios.tempObject).getIdEstado();
-            String nome = ((ModCidade) DadosTemporarios.tempObject).getNome();
+        if(DadosTemporarios.tempObject instanceof ModPais){
+            int id = ((ModPais) DadosTemporarios.tempObject).getId();
+            String nome = ((ModPais) DadosTemporarios.tempObject).getNome();
             
             tfId.setText(String.valueOf(id));
-            tfIdEstado.setText(String.valueOf(idEstado));
             tfNome.setText(nome);
             
-            jcbEstado.setSelectedIndex(idEstado - 1);
-        
             DadosTemporarios.tempObject = null;
             
             return true;
@@ -75,87 +61,50 @@ public class CadCidade extends javax.swing.JFrame {
     }
     
     private void inserir(){
-        DaoCidade daoCidade = new DaoCidade();
+        DaoPais daoPais = new DaoPais();
         
-        if (daoCidade.inserir(Integer.parseInt(tfId.getText()), Integer.parseInt(tfIdEstado.getText()), tfNome.getText())){
-            JOptionPane.showMessageDialog(null, "Cidade salva com sucesso!");
+        if (daoPais.inserir(Integer.parseInt(tfId.getText()), tfNome.getText())){
+            JOptionPane.showMessageDialog(null, "Pais salvo com sucesso!");
             
-            tfId.setText(String.valueOf(daoCidade.buscarProximoId()));
+            tfId.setText(String.valueOf(daoPais.buscarProximoId()));
             tfNome.setText("");
         }else{
-            JOptionPane.showMessageDialog(null, "Não foi possível salvar a cidade!");
+            JOptionPane.showMessageDialog(null, "Não foi possível salvar o pais!");
         }
     }
     
     private void alterar(){
-        DaoCidade daoCidade = new DaoCidade();
+        DaoPais daoPais = new DaoPais();
         
-        if (daoCidade.alterar(Integer.parseInt(tfId.getText()), tfIdEstado.getText(), tfNome.getText())){
-            JOptionPane.showMessageDialog(null, "Cidade alterada com sucesso!");
+        if (daoPais.alterar(Integer.parseInt(tfId.getText()), tfNome.getText())){
+            JOptionPane.showMessageDialog(null, "Pais alterado com sucesso!");
             
             tfId.setText("");
-            tfIdEstado.setText("");
             tfNome.setText("");
         }else{
-            JOptionPane.showMessageDialog(null, "Não foi possível alterar a cidade!");
+            JOptionPane.showMessageDialog(null, "Não foi possível alterar o pais!");
         }
         
-        ((ListCidade) Formularios.listCidade).listarTodos();
+        ((ListPais) Formularios.listPais).listarTodos();
         
         dispose();
     }
     
     private void excluir(){
-        DaoCidade daoCidade = new DaoCidade();
+        DaoPais daoPais = new DaoPais();
         
-        if (daoCidade.excluir(Integer.parseInt(tfId.getText()))){
-            JOptionPane.showMessageDialog(null, "Cidade " + tfNome.getText() + " excluída com sucesso!");
+        if (daoPais.excluir(Integer.parseInt(tfId.getText()))){
+            JOptionPane.showMessageDialog(null, "Categoria " + tfNome.getText() + " excluída com sucesso!");
             
             tfId.setText("");
             tfNome.setText("");
         }else{
-            JOptionPane.showMessageDialog(null, "Não foi possível excluir a cidade!");
+            JOptionPane.showMessageDialog(null, "Não foi possível excluir a categoria!");
         }
         
-        ((ListCidade) Formularios.listCidade).listarTodos();
+        ((ListPais) Formularios.listPais).listarTodos();
         
         dispose();
-    }
-    
-    private void carregarEstados(){
-        try{
-            DaoEstado daoEstado = new DaoEstado();
-
-            ResultSet resultSet = daoEstado.listarTodos();
-
-            while(resultSet.next()){
-                jcbEstado.addItem(resultSet.getString("NOME"));
-            }
-        }catch(Exception e){
-            
-        }
-    }
-    
-    private void recuperaIdEstado(){
-        try{
-            DaoEstado daoEstado = new DaoEstado();
-            ResultSet resultSet = daoEstado.listarPorNome(jcbEstado.getSelectedItem().toString());
-            resultSet.next();
-            tfIdEstado.setText(resultSet.getString("ID"));
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-    }
-    
-    private void recuperaUfEstado(){
-        try{
-            DaoEstado daoEstado = new DaoEstado();
-            ResultSet resultSet = daoEstado.listarPorNome(jcbEstado.getSelectedItem().toString());
-            resultSet.next();
-            tfUf.setText(resultSet.getString("UF"));
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
     }
     
     /**
@@ -172,15 +121,11 @@ public class CadCidade extends javax.swing.JFrame {
         tfId = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         tfNome = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jcbEstado = new javax.swing.JComboBox<>();
         btnAcao = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
-        tfIdEstado = new javax.swing.JTextField();
-        tfUf = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Cadastro de cidade");
+        setTitle("Cadastro de pais");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -189,21 +134,13 @@ public class CadCidade extends javax.swing.JFrame {
 
         jLabel1.setText("ID");
 
-        jLabel2.setText("Nome");
-
-        tfNome.addActionListener(new java.awt.event.ActionListener() {
+        tfId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfNomeActionPerformed(evt);
+                tfIdActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("Estado");
-
-        jcbEstado.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jcbEstadoItemStateChanged(evt);
-            }
-        });
+        jLabel2.setText("Nome");
 
         btnAcao.setText("Salvar");
         btnAcao.addActionListener(new java.awt.event.ActionListener() {
@@ -219,12 +156,6 @@ public class CadCidade extends javax.swing.JFrame {
             }
         });
 
-        tfIdEstado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfIdEstadoActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -232,24 +163,17 @@ public class CadCidade extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfNome)
+                    .addComponent(tfNome, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnAcao)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnExcluir))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jcbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfUf, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfIdEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 224, Short.MAX_VALUE)))
+                                .addComponent(btnExcluir)))
+                        .addGap(0, 185, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -260,17 +184,10 @@ public class CadCidade extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jcbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfIdEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfUf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAcao)
                     .addComponent(btnExcluir))
@@ -297,39 +214,39 @@ public class CadCidade extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tfNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNomeActionPerformed
+    private void tfIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfNomeActionPerformed
-
-    private void tfIdEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdEstadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfIdEstadoActionPerformed
+    }//GEN-LAST:event_tfIdActionPerformed
 
     private void btnAcaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcaoActionPerformed
-        if (btnAcao.getText() == Constantes.BTN_SALVAR_TEXT)
+        DaoPais daoPais = new DaoPais();
+        
+        if (btnAcao.getText() == Constantes.BTN_SALVAR_TEXT){
             inserir();
-        else if (btnAcao.getText() == Constantes.BTN_ALTERAR_TEXT)
+            
+            tfId.setText(String.valueOf(daoPais.buscarProximoId()));
+            tfNome.setText("");
+        }
+        else if (btnAcao.getText() == Constantes.BTN_ALTERAR_TEXT){
             alterar();
+            ((ListPais) Formularios.listPais).listarTodos();
+            dispose();
+        }
     }//GEN-LAST:event_btnAcaoActionPerformed
-
-    private void jcbEstadoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbEstadoItemStateChanged
-        recuperaIdEstado();
-        recuperaUfEstado();
-    }//GEN-LAST:event_jcbEstadoItemStateChanged
-
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        Formularios.cadCidade = null;
-    }//GEN-LAST:event_formWindowClosed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         int escolha = 
                 JOptionPane.showConfirmDialog(
                         null, 
-                        "Deseja realmente excluir a cidade " + tfNome.getText() + "?");
+                        "Deseja realmente excluir o pais " + tfNome.getText() + "?");
         
         if(escolha == JOptionPane.YES_OPTION)
             excluir();
     }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        Formularios.cadPais = null;
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
@@ -348,20 +265,20 @@ public class CadCidade extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadCidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadPais.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadCidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadPais.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadCidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadPais.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadCidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadPais.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadCidade().setVisible(true);
+                new CadPais().setVisible(true);
             }
         });
     }
@@ -371,12 +288,8 @@ public class CadCidade extends javax.swing.JFrame {
     private javax.swing.JButton btnExcluir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JComboBox<String> jcbEstado;
     private javax.swing.JTextField tfId;
-    private javax.swing.JTextField tfIdEstado;
     private javax.swing.JTextField tfNome;
-    private javax.swing.JTextField tfUf;
     // End of variables declaration//GEN-END:variables
 }
