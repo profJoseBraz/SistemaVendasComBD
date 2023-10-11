@@ -10,6 +10,8 @@ import com.mycompany.visao.categoria.CadCategoria;
 import com.mycompany.visao.categoria.ListCategoria;
 import com.mycompany.visao.cidade.CadCidade;
 import com.mycompany.visao.cidade.ListCidade;
+import com.mycompany.visao.estado.CadEstado;
+import com.mycompany.visao.estado.ListEstado;
 import com.mycompany.visao.pais.CadPais;
 import com.mycompany.visao.pais.ListPais;
 import javax.swing.JOptionPane;
@@ -50,10 +52,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         miCadastroCategoria = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         mnConsulta = new javax.swing.JMenu();
         miConsultaCategoria = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SISTEMA DE VENDAS - PROGRAMADOR DE SISTEMAS 2023 | v. 1.0.0.3");
@@ -84,6 +88,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         mnCadastro.add(jMenuItem3);
 
+        jMenuItem5.setText("Estado");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        mnCadastro.add(jMenuItem5);
+
         menuBar.add(mnCadastro);
 
         mnConsulta.setText("Consultas");
@@ -112,6 +124,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         mnConsulta.add(jMenuItem4);
 
+        jMenuItem6.setText("Estado");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        mnConsulta.add(jMenuItem6);
+
         menuBar.add(mnConsulta);
 
         setJMenuBar(menuBar);
@@ -131,7 +151,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void miCadastroCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCadastroCategoriaActionPerformed
-//        CadCategoria cadCategoria = new CadCategoria();
         if (Formularios.cadCategoria == null)
             Formularios.cadCategoria = new CadCategoria();
         
@@ -139,7 +158,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_miCadastroCategoriaActionPerformed
 
     private void miConsultaCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miConsultaCategoriaActionPerformed
-//        ListCategoria listCategoria = new ListCategoria();
         if (Formularios.listCategoria == null)
             Formularios.listCategoria = new ListCategoria();
         
@@ -173,6 +191,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
         Formularios.listPais.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        if (Formularios.cadEstado == null)
+            Formularios.cadEstado = new CadEstado();
+        
+        Formularios.cadEstado.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        if (Formularios.listEstado == null)
+            Formularios.listEstado = new ListEstado();
+        
+        Formularios.listEstado.setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,6 +246,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem miCadastroCategoria;
     private javax.swing.JMenuItem miConsultaCategoria;

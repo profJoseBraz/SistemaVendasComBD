@@ -14,6 +14,6 @@ import java.sql.Connection;
  */
 public class SistemaVendas {
     public static void main(String[] args) {
-        BancoDeDadosMySql.conectar();
+        
     }
 }

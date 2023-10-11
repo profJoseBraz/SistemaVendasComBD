@@ -23,4 +23,8 @@ public class Formularios {
     public static JFrame cadPais;
     public static JFrame listPais;
     
+    //Estado
+    public static JFrame cadEstado;
+    public static JFrame listEstado;
+    
 }
