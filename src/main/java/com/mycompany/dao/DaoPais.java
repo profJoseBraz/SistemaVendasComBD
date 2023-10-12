@@ -4,18 +4,14 @@
  */
 package com.mycompany.dao;
 
-import static com.mycompany.ferramentas.BancoDeDadosMySql.getConexao;
-import static com.mycompany.ferramentas.BancoDeDadosMySql.getResultado;
-import static com.mycompany.ferramentas.BancoDeDadosMySql.getStatement;
-import static com.mycompany.ferramentas.BancoDeDadosMySql.setResultado;
-import static com.mycompany.ferramentas.BancoDeDadosMySql.setStatement;
+import com.mycompany.ferramentas.BancoDeDadosMySql;
 import java.sql.ResultSet;
 
 /**
  *
  * @author jose_
  */
-public class DaoPais {
+public class DaoPais extends BancoDeDadosMySql{
     private String sql; 
     
     public Boolean inserir(int id, String nome){

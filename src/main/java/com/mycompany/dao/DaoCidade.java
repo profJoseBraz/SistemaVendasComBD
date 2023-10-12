@@ -5,11 +5,6 @@
 package com.mycompany.dao;
 
 import com.mycompany.ferramentas.BancoDeDadosMySql;
-import static com.mycompany.ferramentas.BancoDeDadosMySql.getConexao;
-import static com.mycompany.ferramentas.BancoDeDadosMySql.getResultado;
-import static com.mycompany.ferramentas.BancoDeDadosMySql.getStatement;
-import static com.mycompany.ferramentas.BancoDeDadosMySql.setResultado;
-import static com.mycompany.ferramentas.BancoDeDadosMySql.setStatement;
 import java.sql.ResultSet;
 
 /**
@@ -78,7 +73,7 @@ public class DaoCidade extends BancoDeDadosMySql{
         try{
             sql = 
                 " SELECT                    " +
-                "   CID.ID,                 " +
+                "   CID.ID AS ID,           " +
                 "   EST.NOME AS ESTADO,     " +
                 "   CID.NOME AS CIDADE,     " +
                 "   EST.UF                  " +
@@ -101,7 +96,7 @@ public class DaoCidade extends BancoDeDadosMySql{
         try{
             sql = 
                 " SELECT                    " +
-                "   CID.ID,                 " +
+                "   CID.ID AS ID,           " +
                 "   EST.NOME AS ESTADO,     " +
                 "   CID.NOME AS CIDADE,     " +
                 "   EST.UF                  " +
@@ -128,7 +123,7 @@ public class DaoCidade extends BancoDeDadosMySql{
         try{
             sql = 
                 " SELECT                    " +
-                "   CID.ID,                 " +
+                "   CID.ID AS ID,           " +
                 "   EST.NOME AS ESTADO,     " +
                 "   CID.NOME AS CIDADE,     " +
                 "   EST.UF                  " +
@@ -155,7 +150,7 @@ public class DaoCidade extends BancoDeDadosMySql{
         try{
             sql = 
                 " SELECT                    " +
-                "   CID.ID,                 " +
+                "   CID.ID AS ID,           " +
                 "   EST.NOME AS ESTADO,     " +
                 "   CID.NOME AS CIDADE,     " +
                 "   EST.UF                  " +
@@ -182,7 +177,7 @@ public class DaoCidade extends BancoDeDadosMySql{
         try{
             sql = 
                 " SELECT                    " +
-                "   CID.ID,                 " +
+                "   CID.ID AS ID,           " +
                 "   EST.NOME AS ESTADO,     " +
                 "   CID.NOME AS CIDADE,     " +
                 "   EST.UF                  " +

@@ -4,17 +4,13 @@
  */
 package com.mycompany.visao.cidade;
 
-import com.mycompany.dao.DaoCategoria;
 import com.mycompany.ferramentas.Constantes;
 import com.mycompany.ferramentas.DadosTemporarios;
 import com.mycompany.dao.DaoCidade;
 import com.mycompany.dao.DaoEstado;
 import com.mycompany.dao.DaoPais;
 import com.mycompany.ferramentas.Formularios;
-import com.mycompany.modelo.ModCategoria;
 import com.mycompany.modelo.ModCidade;
-import com.mycompany.visao.categoria.ListCategoria;
-import com.mycompany.visao.pais.ListPais;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
@@ -65,8 +61,24 @@ public class CadCidade extends javax.swing.JFrame {
             tfIdEstado.setText(String.valueOf(idEstado));
             tfNome.setText(nome);
             
-            jcbEstado.setSelectedIndex(idEstado - 1);
-        
+            //jcbEstado.setSelectedIndex(idEstado - 1);
+            //
+            try{
+                DaoEstado daoEstado = new DaoEstado();
+                ResultSet resultSet = daoEstado.listarPorId(idEstado);
+                resultSet.next();
+                String pais = resultSet.getString("ESTADO");
+                int index = 0;
+                for(int i = 0; i < jcbEstado.getItemCount(); i++){
+                    if(jcbEstado.getItemAt(i).equals(pais)){
+                        index = i;
+                        break;
+                    }
+                }
+                jcbEstado.setSelectedIndex(index);
+            }catch(Exception e){}
+            //
+            
             DadosTemporarios.tempObject = null;
             
             return true;
