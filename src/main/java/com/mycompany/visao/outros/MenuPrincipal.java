@@ -16,6 +16,8 @@ import com.mycompany.visao.estado.CadEstado;
 import com.mycompany.visao.estado.ListEstado;
 import com.mycompany.visao.pais.CadPais;
 import com.mycompany.visao.pais.ListPais;
+import com.mycompany.visao.pessoa.CadPessoa;
+import com.mycompany.visao.pessoa.ListPessoa;
 import javax.swing.JOptionPane;
 
 /**
@@ -56,12 +58,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
         mnConsulta = new javax.swing.JMenu();
         miConsultaCategoria = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SISTEMA DE VENDAS - PROGRAMADOR DE SISTEMAS 2023 | v. 1.0.0.3");
@@ -108,6 +112,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         mnCadastro.add(jMenuItem7);
 
+        jMenuItem9.setText("Pessoa");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
+        mnCadastro.add(jMenuItem9);
+
         menuBar.add(mnCadastro);
 
         mnConsulta.setText("Consultas");
@@ -145,7 +157,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mnConsulta.add(jMenuItem6);
 
         jMenuItem8.setText("Endereço");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         mnConsulta.add(jMenuItem8);
+
+        jMenuItem10.setText("Pessoa");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
+        mnConsulta.add(jMenuItem10);
 
         menuBar.add(mnConsulta);
 
@@ -228,6 +253,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Formularios.cadEndereco.setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        if (Formularios.listEnderesco == null)
+            Formularios.listEnderesco = new ListEndereco();
+        
+        Formularios.listEnderesco.setVisible(true);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        if (Formularios.cadPessoa == null)
+            Formularios.cadPessoa = new CadPessoa();
+        
+        Formularios.cadPessoa.setVisible(true);
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        if (Formularios.listPessoa == null)
+            Formularios.listPessoa = new ListPessoa();
+        
+        Formularios.listPessoa.setVisible(true);
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -265,6 +311,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
@@ -272,6 +319,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem miCadastroCategoria;
     private javax.swing.JMenuItem miConsultaCategoria;

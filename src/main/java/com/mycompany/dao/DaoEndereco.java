@@ -115,7 +115,9 @@ public class DaoEndereco extends BancoDeDadosMySql{
                 " FROM                              " +
                 "   ENDERECO EN                     " +
                 " JOIN CIDADE CID ON                " +
-                "   CID.ID = EN.ID_CIDADE           " ;
+                "   CID.ID = EN.ID_CIDADE           " +
+                " WHERE                             " +
+                "   EN.ID = ?                       " ;
             
             setStatement(getConexao().prepareStatement(sql));
             

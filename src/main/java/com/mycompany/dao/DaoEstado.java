@@ -99,7 +99,7 @@ public class DaoEstado extends BancoDeDadosMySql{
         try{
             sql = 
                 " SELECT                    " +
-                "   EST.ID,                 " +
+                "   EST.ID AS ID,           " +
                 "   PA.NOME AS PAIS,        " +
                 "   EST.NOME AS ESTADO,     " +
                 "   EST.UF                  " +
