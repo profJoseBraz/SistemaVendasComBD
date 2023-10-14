@@ -87,17 +87,17 @@ public class ListPessoa extends javax.swing.JFrame {
 
         tablePessoa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "RUA", "CEP", "NÚM. RESIDÊNCIA", "NOME", "SOBRENOME", "GÊNERO", "TELEFONE", "EMAIL", "ESTADO CIVIL"
+                "ID", "CIDADE", "RUA", "CEP", "NÚM. RESIDENCIA", "NOME", "SOBRENOME", "GENERO", "TELEFONE", "EMAIL", "ESTADO CIVIL"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -112,6 +112,11 @@ public class ListPessoa extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablePessoa);
 
         jcbBuscar.setText("Buscar");
+        jcbBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -167,16 +172,17 @@ public class ListPessoa extends javax.swing.JFrame {
     private void tablePessoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablePessoaMouseClicked
         try{
             if (evt.getClickCount() == 2){
+                //Guarda os dados da pessoa
                 ModPessoa modPessoa = new ModPessoa();
 
                 modPessoa.setId(Integer.parseInt(String.valueOf(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 0))));
 //                modPessoa.setIdEndereco(Integer.parseInt(String.valueOf(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 1))));
 //                modPessoa.setIdEstadoCivil(Integer.parseInt(String.valueOf(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 2))));;;
-                modPessoa.setNome(String.valueOf(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 3)));
-                modPessoa.setSobrenome(String.valueOf(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 4)));
-                modPessoa.setGenero(String.valueOf(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 5)));
-                modPessoa.setTelefone(String.valueOf(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 6)));
-                modPessoa.setEmail(String.valueOf(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 7)));
+                modPessoa.setNome(String.valueOf(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 5)));
+                modPessoa.setSobrenome(String.valueOf(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 6)));
+                modPessoa.setGenero(String.valueOf(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 7)));
+                modPessoa.setTelefone(String.valueOf(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 8)));
+                modPessoa.setEmail(String.valueOf(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 9)));
                 
                 DaoEndereco daoEndereco = new DaoEndereco();
                 ResultSet resultSet = daoEndereco.listarPorId(Integer.parseInt(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 0).toString()));
@@ -188,16 +194,25 @@ public class ListPessoa extends javax.swing.JFrame {
                 modPessoa.setIdEndereco(idEndereco);
                 
                 DaoEstadoCivil daoEstadoCivil = new DaoEstadoCivil();
-                resultSet = daoEstadoCivil.listarPorNome(String.valueOf(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 0)));
+                resultSet = daoEstadoCivil.listarPorNome(String.valueOf(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 10)));
 
                 int idEstadoCivil = -1;
                 while(resultSet.next())
-                    idEndereco = resultSet.getInt("ID");
-
+                    idEstadoCivil = resultSet.getInt("ID");
+                
                 modPessoa.setIdEstadoCivil(idEstadoCivil);
+                //
+                
+                //Guarda os dados do endereço
+                ModEndereco modEndereco = new ModEndereco();
+                
+                modEndereco.setNomeRua(String.valueOf(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 2)));
+                modEndereco.setCep(String.valueOf(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 3)));
+                modEndereco.setNumeroResidencia(String.valueOf(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 4)));
                 
                 DadosTemporarios.tempObject = (ModPessoa) modPessoa;
-
+                DadosTemporarios.tempObject2 = (ModEndereco) modEndereco;
+                
                 CadPessoa cadPessoa = new CadPessoa();
                 cadPessoa.setVisible(true);
             }
@@ -205,6 +220,14 @@ public class ListPessoa extends javax.swing.JFrame {
             System.err.println(e.getMessage());
         }
     }//GEN-LAST:event_tablePessoaMouseClicked
+
+    private void jcbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbBuscarActionPerformed
+        switch (jcbTipoFiltro.getSelectedIndex()){
+            case 0:
+                listarTodos();
+                break;
+        }
+    }//GEN-LAST:event_jcbBuscarActionPerformed
 
     /**
      * @param args the command line arguments

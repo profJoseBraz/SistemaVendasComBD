@@ -90,9 +90,9 @@ public class DaoPessoa extends BancoDeDadosMySql{
                 "   E.NUMERO_RESIDENCIA AS NUM_RES, " +
                 "   P.NOME AS NOME,                 " +
                 "   P.SOBRENOME AS SOBRENOME,       " +
-                "   P.GENERO AS NOME,               " +
-                "   P.TELEFONE AS NOME,             " +
-                "   P.EMAIL AS NOME,                " +
+                "   P.GENERO AS GENERO,             " +
+                "   P.TELEFONE AS TELEFONE,         " +
+                "   P.EMAIL AS EMAIL,               " +
                 "   EC.NOME AS ESTADO_CIVIL         " +
                 " FROM                              " +
                 "   PESSOA P                        " +
@@ -124,9 +124,9 @@ public class DaoPessoa extends BancoDeDadosMySql{
                 "   E.NUMERO_RESIDENCIA AS NUM_RES, " +
                 "   P.NOME AS NOME,                 " +
                 "   P.SOBRENOME AS SOBRENOME,       " +
-                "   P.GENERO AS NOME,               " +
-                "   P.TELEFONE AS NOME,             " +
-                "   P.EMAIL AS NOME,                " +
+                "   P.GENERO AS GENERO,             " +
+                "   P.TELEFONE AS TELEFONE,         " +
+                "   P.EMAIL AS EMAIL,               " +
                 "   EC.NOME AS ESTADO_CIVIL         " +
                 " FROM                              " +
                 "   PESSOA P                        " +
@@ -161,9 +161,9 @@ public class DaoPessoa extends BancoDeDadosMySql{
                 "   E.NUMERO_RESIDENCIA AS NUM_RES, " +
                 "   P.NOME AS NOME,                 " +
                 "   P.SOBRENOME AS SOBRENOME,       " +
-                "   P.GENERO AS NOME,               " +
-                "   P.TELEFONE AS NOME,             " +
-                "   P.EMAIL AS NOME,                " +
+                "   P.GENERO AS GENERO,             " +
+                "   P.TELEFONE AS TELEFONE,         " +
+                "   P.EMAIL AS EMAIL,               " +
                 "   EC.NOME AS ESTADO_CIVIL         " +
                 " FROM                              " +
                 "   PESSOA P                        " +
@@ -198,9 +198,9 @@ public class DaoPessoa extends BancoDeDadosMySql{
                 "   E.NUMERO_RESIDENCIA AS NUM_RES, " +
                 "   P.NOME AS NOME,                 " +
                 "   P.SOBRENOME AS SOBRENOME,       " +
-                "   P.GENERO AS NOME,               " +
-                "   P.TELEFONE AS NOME,             " +
-                "   P.EMAIL AS NOME,                " +
+                "   P.GENERO AS GENERO,             " +
+                "   P.TELEFONE AS TELEFONE,         " +
+                "   P.EMAIL AS EMAIL,               " +
                 "   EC.NOME AS ESTADO_CIVIL         " +
                 " FROM                              " +
                 "   PESSOA P                        " +
@@ -235,9 +235,9 @@ public class DaoPessoa extends BancoDeDadosMySql{
                 "   E.NUMERO_RESIDENCIA AS NUM_RES, " +
                 "   P.NOME AS NOME,                 " +
                 "   P.SOBRENOME AS SOBRENOME,       " +
-                "   P.GENERO AS NOME,               " +
-                "   P.TELEFONE AS NOME,             " +
-                "   P.EMAIL AS NOME,                " +
+                "   P.GENERO AS GENERO,             " +
+                "   P.TELEFONE AS TELEFONE,         " +
+                "   P.EMAIL AS EMAIL,               " +
                 "   EC.NOME AS ESTADO_CIVIL         " +
                 " FROM                              " +
                 "   PESSOA P                        " +
@@ -272,9 +272,9 @@ public class DaoPessoa extends BancoDeDadosMySql{
                 "   E.NUMERO_RESIDENCIA AS NUM_RES, " +
                 "   P.NOME AS NOME,                 " +
                 "   P.SOBRENOME AS SOBRENOME,       " +
-                "   P.GENERO AS NOME,               " +
-                "   P.TELEFONE AS NOME,             " +
-                "   P.EMAIL AS NOME,                " +
+                "   P.GENERO AS GENERO,             " +
+                "   P.TELEFONE AS TELEFONE,         " +
+                "   P.EMAIL AS EMAIL,               " +
                 "   EC.NOME AS ESTADO_CIVIL         " +
                 " FROM                              " +
                 "   PESSOA P                        " +
@@ -309,9 +309,9 @@ public class DaoPessoa extends BancoDeDadosMySql{
                 "   E.NUMERO_RESIDENCIA AS NUM_RES, " +
                 "   P.NOME AS NOME,                 " +
                 "   P.SOBRENOME AS SOBRENOME,       " +
-                "   P.GENERO AS NOME,               " +
-                "   P.TELEFONE AS NOME,             " +
-                "   P.EMAIL AS NOME,                " +
+                "   P.GENERO AS GENERO,             " +
+                "   P.TELEFONE AS TELEFONE,         " +
+                "   P.EMAIL AS EMAIL,               " +
                 "   EC.NOME AS ESTADO_CIVIL         " +
                 " FROM                              " +
                 "   PESSOA P                        " +
@@ -346,9 +346,9 @@ public class DaoPessoa extends BancoDeDadosMySql{
                 "   E.NUMERO_RESIDENCIA AS NUM_RES, " +
                 "   P.NOME AS NOME,                 " +
                 "   P.SOBRENOME AS SOBRENOME,       " +
-                "   P.GENERO AS NOME,               " +
-                "   P.TELEFONE AS NOME,             " +
-                "   P.EMAIL AS NOME,                " +
+                "   P.GENERO AS GENERO,             " +
+                "   P.TELEFONE AS TELEFONE,         " +
+                "   P.EMAIL AS EMAIL,               " +
                 "   EC.NOME AS ESTADO_CIVIL         " +
                 " FROM                              " +
                 "   PESSOA P                        " +
@@ -383,9 +383,9 @@ public class DaoPessoa extends BancoDeDadosMySql{
                 "   E.NUMERO_RESIDENCIA AS NUM_RES, " +
                 "   P.NOME AS NOME,                 " +
                 "   P.SOBRENOME AS SOBRENOME,       " +
-                "   P.GENERO AS NOME,               " +
-                "   P.TELEFONE AS NOME,             " +
-                "   P.EMAIL AS NOME,                " +
+                "   P.GENERO AS GENERO,             " +
+                "   P.TELEFONE AS TELEFONE,         " +
+                "   P.EMAIL AS EMAIL,               " +
                 "   EC.NOME AS ESTADO_CIVIL         " +
                 " FROM                              " +
                 "   PESSOA P                        " +
@@ -420,9 +420,9 @@ public class DaoPessoa extends BancoDeDadosMySql{
                 "   E.NUMERO_RESIDENCIA AS NUM_RES, " +
                 "   P.NOME AS NOME,                 " +
                 "   P.SOBRENOME AS SOBRENOME,       " +
-                "   P.GENERO AS NOME,               " +
-                "   P.TELEFONE AS NOME,             " +
-                "   P.EMAIL AS NOME,                " +
+                "   P.GENERO AS GENERO,             " +
+                "   P.TELEFONE AS TELEFONE,         " +
+                "   P.EMAIL AS EMAIL,               " +
                 "   EC.NOME AS ESTADO_CIVIL         " +
                 " FROM                              " +
                 "   PESSOA P                        " +
@@ -457,9 +457,9 @@ public class DaoPessoa extends BancoDeDadosMySql{
                 "   E.NUMERO_RESIDENCIA AS NUM_RES, " +
                 "   P.NOME AS NOME,                 " +
                 "   P.SOBRENOME AS SOBRENOME,       " +
-                "   P.GENERO AS NOME,               " +
-                "   P.TELEFONE AS NOME,             " +
-                "   P.EMAIL AS NOME,                " +
+                "   P.GENERO AS GENERO,             " +
+                "   P.TELEFONE AS TELEFONE,         " +
+                "   P.EMAIL AS EMAIL,               " +
                 "   EC.NOME AS ESTADO_CIVIL         " +
                 " FROM                              " +
                 "   PESSOA P                        " +

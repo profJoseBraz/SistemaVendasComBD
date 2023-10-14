@@ -15,9 +15,6 @@ import com.mycompany.ferramentas.Formularios;
 import com.mycompany.modelo.ModEndereco;
 import com.mycompany.modelo.ModPessoa;
 import com.mycompany.visao.cidade.ListCidade;
-import com.mycompany.visao.endereco.CadEndereco;
-import com.mycompany.visao.endereco.ListEndereco;
-import com.mycompany.visao.estado.ListEstado;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
@@ -41,7 +38,7 @@ public class CadPessoa extends javax.swing.JFrame {
             DaoEndereco daoEndereco = new DaoEndereco();
             
             int id = daoPessoa.buscarProximoId(); 
-            int idEnd = id;
+            int idEnd = daoEndereco.buscarProximoId();
             if (id > 0){
                 tfId.setText(String.valueOf(id));
                 tfIdEndereco.setText(String.valueOf(idEnd));
@@ -61,9 +58,9 @@ public class CadPessoa extends javax.swing.JFrame {
         
         tfId.setEnabled(false);
         
-        tfIdEndereco.setVisible(false);
-        tfIdEstadoCivil.setVisible(false);
-        tfIdCidade.setVisible(false);
+        //tfIdEndereco.setVisible(false);
+        //tfIdEstadoCivil.setVisible(false);
+        //tfIdCidade.setVisible(false);
     }
 
     private Boolean existeDadosTemporarios(){        
@@ -99,10 +96,40 @@ public class CadPessoa extends javax.swing.JFrame {
                     }
                 }
                 jcbEstadoCivil.setSelectedIndex(index);
-            }catch(Exception e){}
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }
             //
             
+            //
+            try{
+                DaoEndereco daoEndereco = new DaoEndereco();
+                ResultSet resultSet = daoEndereco.listarPorId(idEndereco);
+                resultSet.next();
+                String cidade = resultSet.getString("CIDADE");
+                int index = 0;
+                for(int i = 0; i < jcbCidade.getItemCount(); i++){
+                    if(jcbCidade.getItemAt(i).equals(cidade)){
+                        index = i;
+                        break;
+                    }
+                }
+                jcbCidade.setSelectedIndex(index);
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+            //
+            
+            String rua = ((ModEndereco) DadosTemporarios.tempObject2).getNomeRua();
+            String cep = ((ModEndereco) DadosTemporarios.tempObject2).getCep();
+            String numRes = ((ModEndereco) DadosTemporarios.tempObject2).getNumeroResidencia();
+            
+            tfRua.setText(rua);
+            tfCep.setText(cep);
+            tfNumero.setText(numRes);
+            
             DadosTemporarios.tempObject = null;
+            DadosTemporarios.tempObject2 = null;
             
             return true;
         }else
@@ -113,10 +140,10 @@ public class CadPessoa extends javax.swing.JFrame {
         DaoPessoa daoPessoa = new DaoPessoa();
         DaoEndereco daoEndereco = new DaoEndereco();
         
-        if (daoEndereco.inserir(Integer.parseInt(tfId.getText()), Integer.parseInt(tfIdCidade.getText()), tfRua.getText(), tfCep.getText(), tfNumero.getText())){
+        if (daoEndereco.inserir(Integer.parseInt(tfIdEndereco.getText()), Integer.parseInt(tfIdCidade.getText()), tfRua.getText(), tfCep.getText(), tfNumero.getText())){
 //            JOptionPane.showMessageDialog(null, "Endereço salvo com sucesso!");
             
-            tfId.setText(String.valueOf(daoEndereco.buscarProximoId()));
+            //tfIdEndereco.setText(String.valueOf(daoEndereco.buscarProximoId()));
             tfRua.setText("");
             tfNumero.setText("");
             tfCep.setText("");
@@ -128,6 +155,7 @@ public class CadPessoa extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Pessoa salva com sucesso!");
             
             tfId.setText(String.valueOf(daoPessoa.buscarProximoId()));
+            tfIdEndereco.setText(String.valueOf(daoEndereco.buscarProximoId()));
             tfNome.setText("");
             tfSobrenome.setText("");
             tfTelefone.setText("");
@@ -293,6 +321,12 @@ public class CadPessoa extends javax.swing.JFrame {
 
         btnExcluir.setText("Excluir");
 
+        tfIdEndereco.setText("idEndereco");
+
+        tfIdEstadoCivil.setText("idEstadoCivil");
+
+        tfIdCidade.setText("idCidade");
+
         jLabel2.setText("Cidade");
 
         jcbCidade.addItemListener(new java.awt.event.ItemListener() {
@@ -342,26 +376,27 @@ public class CadPessoa extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jcbEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
                             .addComponent(jLabel3)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnAcao)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnExcluir))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfIdEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfIdEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfIdCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel2)
                             .addComponent(jcbCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7)
-                            .addComponent(jLabel8))
+                            .addComponent(jLabel8)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfIdEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfIdEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfIdCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
