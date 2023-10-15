@@ -72,7 +72,9 @@ com\mycompany\visao\pais\ListPais.class
 com\mycompany\visao\pessoa\CadPessoa.class
 com\mycompany\visao\pessoa\ListPessoa$1.class
 com\mycompany\ferramentas\Formularios.class
+com\mycompany\visao\pessoa\ListPessoa$5.class
 com\mycompany\dao\DaoEndereco.class
+com\mycompany\visao\pessoa\CadPessoa$5.class
 com\mycompany\visao\endereco\ListEndereco$3.class
 com\mycompany\visao\categoria\CadCategoria$2.class
 com\mycompany\visao\outros\MenuPrincipal$9.class
@@ -98,5 +100,6 @@ com\mycompany\visao\estado\ListEstado$3.class
 com\mycompany\visao\categoria\CadCategoria$3.class
 com\mycompany\dao\DaoPessoa.class
 com\mycompany\visao\outros\MenuPrincipal$8.class
+com\mycompany\visao\pessoa\CadPessoa$6.class
 com\mycompany\visao\estado\ListEstado.class
 com\mycompany\visao\pais\ListPais$3.class

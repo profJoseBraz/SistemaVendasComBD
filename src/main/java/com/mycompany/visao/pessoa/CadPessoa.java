@@ -120,6 +120,17 @@ public class CadPessoa extends javax.swing.JFrame {
             }
             //
             
+            //
+            int index = 0;
+            for(int i = 0; i < jcbGenero.getItemCount(); i++){
+                if(jcbGenero.getItemAt(i).equals(genero)){
+                    index = i;
+                    break;
+                }
+            }
+            jcbGenero.setSelectedIndex(index);
+            //
+            
             String rua = ((ModEndereco) DadosTemporarios.tempObject2).getNomeRua();
             String cep = ((ModEndereco) DadosTemporarios.tempObject2).getCep();
             String numRes = ((ModEndereco) DadosTemporarios.tempObject2).getNumeroResidencia();
@@ -140,17 +151,6 @@ public class CadPessoa extends javax.swing.JFrame {
         DaoPessoa daoPessoa = new DaoPessoa();
         DaoEndereco daoEndereco = new DaoEndereco();
         
-        if (daoEndereco.inserir(Integer.parseInt(tfIdEndereco.getText()), Integer.parseInt(tfIdCidade.getText()), tfRua.getText(), tfCep.getText(), tfNumero.getText())){
-//            JOptionPane.showMessageDialog(null, "Endereço salvo com sucesso!");
-            
-            //tfIdEndereco.setText(String.valueOf(daoEndereco.buscarProximoId()));
-            tfRua.setText("");
-            tfNumero.setText("");
-            tfCep.setText("");
-        }else{
-            JOptionPane.showMessageDialog(null, "Não foi possível salvar o endereço!");
-        }
-        
         if (daoPessoa.inserir(Integer.parseInt(tfId.getText()), Integer.parseInt(tfIdEndereco.getText()), Integer.parseInt(tfIdEstadoCivil.getText()), tfNome.getText(), tfSobrenome.getText(), (String) jcbGenero.getSelectedItem(), tfTelefone.getText(), tfEmail.getText())){
             JOptionPane.showMessageDialog(null, "Pessoa salva com sucesso!");
             
@@ -165,13 +165,27 @@ public class CadPessoa extends javax.swing.JFrame {
         }
     }
     
+    private void inserirEndereco(){
+        DaoEndereco daoEndereco = new DaoEndereco();
+        
+        if (daoEndereco.inserir(Integer.parseInt(tfIdEndereco.getText()), Integer.parseInt(tfIdCidade.getText()), tfRua.getText(), tfCep.getText(), tfNumero.getText())){
+//            JOptionPane.showMessageDialog(null, "Endereço salvo com sucesso!");
+            
+            tfRua.setText("");
+            tfNumero.setText("");
+            tfCep.setText("");
+        }else{
+            JOptionPane.showMessageDialog(null, "Não foi possível salvar o endereço!");
+        }
+    }
+    
     private void alterar(){
         DaoPessoa daoPessoa = new DaoPessoa();
         
         if (daoPessoa.alterar(Integer.parseInt(tfId.getText()), Integer.parseInt(tfIdEndereco.getText()), Integer.parseInt(tfIdEstadoCivil.getText()), tfNome.getText(), tfSobrenome.getText(), (String) jcbGenero.getSelectedItem(), tfTelefone.getText(), tfEmail.getText())){
             JOptionPane.showMessageDialog(null, "Pessoa alterada com sucesso!");
             
-            tfId.setText(String.valueOf(daoPessoa.buscarProximoId()));
+            //tfIdEndereco.setText(String.valueOf(daoEndereco.buscarProximoId()));          
             tfNome.setText("");
             tfSobrenome.setText("");
             tfTelefone.setText("");
@@ -179,23 +193,46 @@ public class CadPessoa extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "Não foi possível alterar a pessoa!");
         }
+        
+        ((ListPessoa) Formularios.listPessoa).listarTodos();
+        
+        dispose();
+    }
+    
+    private void alterarEndereco(){
+        DaoEndereco daoEndereco = new DaoEndereco();
+        
+        if (daoEndereco.alterar(Integer.parseInt(tfIdEndereco.getText()), Integer.parseInt(tfIdCidade.getText()), tfRua.getText(), tfCep.getText(), tfNumero.getText())){
+            //JOptionPane.showMessageDialog(null, "Pessoa alterada com sucesso!");
+            
+            tfRua.setText("");
+            tfCep.setText("");
+            tfNumero.setText("");
+        }else{
+            JOptionPane.showMessageDialog(null, "Não foi possível alterar a pessoa!");
+        }
+    }
+    
+    private void excluirEndereco(){
+        
+        DaoEndereco daoEndereco = new DaoEndereco();
+
+        if (daoEndereco.excluir(Integer.parseInt(tfIdEndereco.getText()))){
+
+        }else{
+            JOptionPane.showMessageDialog(null, "Não foi possível excluir o endereco!");
+        }
     }
     
     private void excluir(){
-        DaoPais daoPais = new DaoPais();
+        DaoPessoa daoPessoa = new DaoPessoa();
         
-        if (daoPais.excluir(Integer.parseInt(tfId.getText()))){
+        if (daoPessoa.excluir(Integer.parseInt(tfId.getText())))
             JOptionPane.showMessageDialog(null, "Pessoa excluída com sucesso!");
-            
-            tfNome.setText("");
-            tfSobrenome.setText("");
-            tfTelefone.setText("");
-            tfEmail.setText("");
-        }else{
+        else
             JOptionPane.showMessageDialog(null, "Não foi possível excluir a pessoa!");
-        }
         
-        ((ListCidade) Formularios.listCidade).listarTodos();
+        ((ListPessoa) Formularios.listPessoa).listarTodos();
         
         dispose();
     }
@@ -289,6 +326,11 @@ public class CadPessoa extends javax.swing.JFrame {
         tfNumero = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jLabel1.setText("ID");
 
@@ -320,6 +362,11 @@ public class CadPessoa extends javax.swing.JFrame {
         });
 
         btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         tfIdEndereco.setText("idEndereco");
 
@@ -487,11 +534,31 @@ public class CadPessoa extends javax.swing.JFrame {
     }//GEN-LAST:event_jcbCidadeItemStateChanged
 
     private void btnAcaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcaoActionPerformed
-        if (btnAcao.getText() == Constantes.BTN_SALVAR_TEXT)
+        if (btnAcao.getText() == Constantes.BTN_SALVAR_TEXT){
+            inserirEndereco();
             inserir();
-        else if (btnAcao.getText() == Constantes.BTN_ALTERAR_TEXT)
+        }
+        else if (btnAcao.getText() == Constantes.BTN_ALTERAR_TEXT){            
+            alterarEndereco();
             alterar();
+        }
     }//GEN-LAST:event_btnAcaoActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        int escolha = 
+                JOptionPane.showConfirmDialog(
+                        null, 
+                        "Deseja realmente excluir a pessoa?");
+        
+        if(escolha == JOptionPane.YES_OPTION){
+            excluir();
+            excluirEndereco();
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        Formularios.cadPessoa = null;
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments

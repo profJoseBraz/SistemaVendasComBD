@@ -9,6 +9,7 @@ import com.mycompany.dao.DaoEndereco;
 import com.mycompany.dao.DaoEstadoCivil;
 import com.mycompany.dao.DaoPessoa;
 import com.mycompany.ferramentas.DadosTemporarios;
+import com.mycompany.ferramentas.Formularios;
 import com.mycompany.modelo.ModEndereco;
 import com.mycompany.modelo.ModPessoa;
 import com.mycompany.visao.endereco.CadEndereco;
@@ -82,6 +83,11 @@ public class ListPessoa extends javax.swing.JFrame {
         jcbBuscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jcbTipoFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TODOS", "ID", "RUA", "CEP", "NÚM. RESIDÊNCIA", "NOME", "SOBRENOME", "GENERO", "TELEFONE", "EMAIL", "ESTADO CIVIL" }));
 
@@ -228,6 +234,10 @@ public class ListPessoa extends javax.swing.JFrame {
                 break;
         }
     }//GEN-LAST:event_jcbBuscarActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        Formularios.listPessoa = null;
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments

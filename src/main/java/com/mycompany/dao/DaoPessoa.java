@@ -127,7 +127,8 @@ public class DaoPessoa extends BancoDeDadosMySql{
                 "   P.GENERO AS GENERO,             " +
                 "   P.TELEFONE AS TELEFONE,         " +
                 "   P.EMAIL AS EMAIL,               " +
-                "   EC.NOME AS ESTADO_CIVIL         " +
+                "   EC.NOME AS ESTADO_CIVIL,        " + 
+                "   P.ID_ENDERECO AS ID_ENDERECO    " +
                 " FROM                              " +
                 "   PESSOA P                        " +
                 " JOIN ENDERECO E ON                " +

@@ -18,6 +18,7 @@ import com.mycompany.visao.pais.CadPais;
 import com.mycompany.visao.pais.ListPais;
 import com.mycompany.visao.pessoa.CadPessoa;
 import com.mycompany.visao.pessoa.ListPessoa;
+import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 
 /**
