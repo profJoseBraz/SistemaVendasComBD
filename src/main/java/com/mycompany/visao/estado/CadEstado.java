@@ -10,6 +10,7 @@ import com.mycompany.ferramentas.Constantes;
 import com.mycompany.ferramentas.DadosTemporarios;
 import com.mycompany.ferramentas.Formularios;
 import com.mycompany.modelo.ModEstado;
+import com.mycompany.visao.cidade.CadCidade;
 import com.mycompany.visao.cidade.ListCidade;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -121,9 +122,9 @@ public class CadEstado extends javax.swing.JFrame {
     }
     
     private void excluir(){
-        DaoPais daoPais = new DaoPais();
+        DaoEstado daoEstado = new DaoEstado();
         
-        if (daoPais.excluir(Integer.parseInt(tfId.getText()))){
+        if (daoEstado.excluir(Integer.parseInt(tfId.getText()))){
             JOptionPane.showMessageDialog(null, "Estado " + tfNome.getText() + " excluída com sucesso!");
             
             tfId.setText("");
@@ -132,7 +133,7 @@ public class CadEstado extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Não foi possível excluir o estado!");
         }
         
-        ((ListCidade) Formularios.listCidade).listarTodos();
+        ((ListEstado) Formularios.listEstado).listarTodos();
         
         dispose();
     }
@@ -318,7 +319,11 @@ public class CadEstado extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        Formularios.cadCidade = null;
+        Formularios.cadEstado = null;
+        
+        if(Formularios.cadCidade != null){
+            ((CadCidade) Formularios.cadCidade).carregarEstados();
+        }
     }//GEN-LAST:event_formWindowClosed
 
     /**

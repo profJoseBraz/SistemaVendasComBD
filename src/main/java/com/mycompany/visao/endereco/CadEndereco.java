@@ -127,9 +127,9 @@ public class CadEndereco extends javax.swing.JFrame {
     }
     
     private void excluir(){
-        DaoPais daoPais = new DaoPais();
+        DaoEndereco daoEndereco = new DaoEndereco();
         
-        if (daoPais.excluir(Integer.parseInt(tfId.getText()))){
+        if (daoEndereco.excluir(Integer.parseInt(tfId.getText()))){
             JOptionPane.showMessageDialog(null, "Endereço excluído com sucesso!");
             
             tfRua.setText("");
@@ -139,7 +139,7 @@ public class CadEndereco extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Não foi possível excluir o endereço!");
         }
         
-        ((ListCidade) Formularios.listCidade).listarTodos();
+        ((ListEndereco) Formularios.listEnderesco).listarTodos();
         
         dispose();
     }

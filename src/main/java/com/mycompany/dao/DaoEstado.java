@@ -122,7 +122,7 @@ public class DaoEstado extends BancoDeDadosMySql{
         return getResultado();
     }
     
-    public ResultSet listarPorNome(String nome){
+    public ResultSet listarPorNome(String nome, boolean buscaParcial){
         try{
             sql = 
                 " SELECT                    " +
@@ -139,8 +139,11 @@ public class DaoEstado extends BancoDeDadosMySql{
             
             setStatement(getConexao().prepareStatement(sql));
             
-            getStatement().setString(1, nome + "%");
-            
+            if(buscaParcial)
+                getStatement().setString(1, nome + "%");
+            else
+                getStatement().setString(1, nome);
+           
             setResultado(getStatement().executeQuery());
         }catch(Exception e){
             System.out.println(e.getMessage());

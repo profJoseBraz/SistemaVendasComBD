@@ -7,16 +7,15 @@ package com.mycompany.visao.pessoa;
 import com.mycompany.dao.DaoCidade;
 import com.mycompany.dao.DaoEndereco;
 import com.mycompany.dao.DaoEstadoCivil;
-import com.mycompany.dao.DaoPais;
 import com.mycompany.dao.DaoPessoa;
 import com.mycompany.ferramentas.Constantes;
 import com.mycompany.ferramentas.DadosTemporarios;
 import com.mycompany.ferramentas.Formularios;
 import com.mycompany.modelo.ModEndereco;
 import com.mycompany.modelo.ModPessoa;
-import com.mycompany.visao.cidade.ListCidade;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -58,9 +57,11 @@ public class CadPessoa extends javax.swing.JFrame {
         
         tfId.setEnabled(false);
         
-        //tfIdEndereco.setVisible(false);
-        //tfIdEstadoCivil.setVisible(false);
-        //tfIdCidade.setVisible(false);
+        setExtendedState(MAXIMIZED_BOTH);
+        
+        tfIdEndereco.setVisible(false);
+        tfIdEstadoCivil.setVisible(false);
+        tfIdCidade.setVisible(false);
     }
 
     private Boolean existeDadosTemporarios(){        
@@ -213,17 +214,6 @@ public class CadPessoa extends javax.swing.JFrame {
         }
     }
     
-    private void excluirEndereco(){
-        
-        DaoEndereco daoEndereco = new DaoEndereco();
-
-        if (daoEndereco.excluir(Integer.parseInt(tfIdEndereco.getText()))){
-
-        }else{
-            JOptionPane.showMessageDialog(null, "Não foi possível excluir o endereco!");
-        }
-    }
-    
     private void excluir(){
         DaoPessoa daoPessoa = new DaoPessoa();
         
@@ -235,6 +225,17 @@ public class CadPessoa extends javax.swing.JFrame {
         ((ListPessoa) Formularios.listPessoa).listarTodos();
         
         dispose();
+    }
+    
+    private void excluirEndereco(){
+        
+        DaoEndereco daoEndereco = new DaoEndereco();
+
+        if (daoEndereco.excluir(Integer.parseInt(tfIdEndereco.getText()))){
+
+        }else{
+            JOptionPane.showMessageDialog(null, "Não foi possível excluir o endereco!");
+        }
     }
     
     private void carregarEstadosCivis(){
@@ -287,6 +288,21 @@ public class CadPessoa extends javax.swing.JFrame {
         }
     }
     
+    private boolean camposObrigatoriosPreenchidos(JTextField campos[]){
+        boolean b = true;
+        
+        for(int i = 0; i < campos.length; i++){
+            if(campos[i].getText().equals("")){
+                JOptionPane.showMessageDialog(null, "O campo " + campos[i].getToolTipText() + " é obrigatório!");
+                campos[i].requestFocus();
+                b = false;
+                break;
+            }
+        }
+        
+        return b;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -324,8 +340,13 @@ public class CadPessoa extends javax.swing.JFrame {
         tfCep = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         tfNumero = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel12 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de pessoa");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -342,17 +363,25 @@ public class CadPessoa extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("Nome");
+        jLabel4.setText("Nome *");
 
-        jLabel5.setText("Sobrenome");
+        tfNome.setToolTipText("Nome");
+
+        jLabel5.setText("Sobrenome *");
+
+        tfSobrenome.setToolTipText("Sobrenome");
 
         jcbGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MASCULINO", "FEMININO", "OUTROS" }));
 
         jLabel6.setText("Gênero");
 
-        jLabel7.setText("Telefone");
+        jLabel7.setText("Telefone *");
 
-        jLabel8.setText("E-mail");
+        tfTelefone.setToolTipText("Telefone");
+
+        jLabel8.setText("E-mail *");
+
+        tfEmail.setToolTipText("E-mail");
 
         btnAcao.setText("Salvar");
         btnAcao.addActionListener(new java.awt.event.ActionListener() {
@@ -382,11 +411,23 @@ public class CadPessoa extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setText("Rua");
+        jLabel9.setText("Rua *");
 
-        jLabel10.setText("CEP");
+        tfRua.setToolTipText("Rua");
 
-        jLabel11.setText("Número");
+        jLabel10.setText("CEP *");
+
+        tfCep.setToolTipText("CEP");
+
+        jLabel11.setText("Número *");
+
+        tfNumero.setToolTipText("Número");
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel12.setText("Endereço");
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel13.setText("Pessoa");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -395,7 +436,7 @@ public class CadPessoa extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfRua)
+                    .addComponent(jSeparator2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfCep, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -406,6 +447,8 @@ public class CadPessoa extends javax.swing.JFrame {
                                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(tfNumero)))
+                    .addComponent(jSeparator1)
+                    .addComponent(tfRua)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -422,18 +465,10 @@ public class CadPessoa extends javax.swing.JFrame {
                     .addComponent(tfEmail)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jcbEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnAcao)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnExcluir))
-                            .addComponent(jLabel2)
-                            .addComponent(jcbCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -443,7 +478,17 @@ public class CadPessoa extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(tfIdEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfIdCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(tfIdCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addComponent(jcbCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcbEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -458,6 +503,10 @@ public class CadPessoa extends javax.swing.JFrame {
                     .addComponent(tfIdEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfIdEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfIdCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel12)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -474,6 +523,10 @@ public class CadPessoa extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel13)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -498,7 +551,7 @@ public class CadPessoa extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAcao)
                     .addComponent(btnExcluir))
@@ -534,13 +587,14 @@ public class CadPessoa extends javax.swing.JFrame {
     }//GEN-LAST:event_jcbCidadeItemStateChanged
 
     private void btnAcaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcaoActionPerformed
-        if (btnAcao.getText() == Constantes.BTN_SALVAR_TEXT){
-            inserirEndereco();
-            inserir();
-        }
-        else if (btnAcao.getText() == Constantes.BTN_ALTERAR_TEXT){            
-            alterarEndereco();
-            alterar();
+        if(camposObrigatoriosPreenchidos(new JTextField[]{tfRua, tfCep, tfNumero, tfNome, tfSobrenome, tfTelefone, tfEmail})){
+            if (btnAcao.getText() == Constantes.BTN_SALVAR_TEXT){
+                inserirEndereco();
+                inserir();
+            }else if (btnAcao.getText() == Constantes.BTN_ALTERAR_TEXT){            
+                alterarEndereco();
+                alterar();
+            }
         }
     }//GEN-LAST:event_btnAcaoActionPerformed
 
@@ -604,6 +658,8 @@ public class CadPessoa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -613,6 +669,8 @@ public class CadPessoa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JComboBox<String> jcbCidade;
     private javax.swing.JComboBox<String> jcbEstadoCivil;
     private javax.swing.JComboBox<String> jcbGenero;

@@ -94,7 +94,7 @@ public class ListEstado extends javax.swing.JFrame {
             DaoEstado daoEstado = new DaoEstado();
 
             //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoEstado.listarPorNome(pNome);
+            ResultSet resultSet = daoEstado.listarPorNome(pNome, true);
             
             defaultTableModel.setRowCount(0);
             while (resultSet.next()){

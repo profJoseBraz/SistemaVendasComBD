@@ -268,7 +268,7 @@ public class ListCidade extends javax.swing.JFrame {
                 modCidade.setNome(String.valueOf(tableCidade.getValueAt(tableCidade.getSelectedRow(), 2)));
 
                 DaoEstado daoEstado = new DaoEstado();
-                ResultSet resultSet = daoEstado.listarPorNome(String.valueOf(tableCidade.getValueAt(tableCidade.getSelectedRow(), 1)));
+                ResultSet resultSet = daoEstado.listarPorNome(String.valueOf(tableCidade.getValueAt(tableCidade.getSelectedRow(), 1)), false);
 
                 int idEstado = -1;
                 while(resultSet.next())

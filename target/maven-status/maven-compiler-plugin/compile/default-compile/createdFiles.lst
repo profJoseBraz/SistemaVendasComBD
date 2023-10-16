@@ -1,5 +1,6 @@
 com\mycompany\visao\outros\MenuPrincipal$7.class
 com\mycompany\visao\estado\CadEstado$4.class
+com\mycompany\visao\cidade\CadCidade$8.class
 com\mycompany\visao\estado\CadEstado.class
 com\mycompany\modelo\ModEndereco.class
 com\mycompany\visao\estado\CadEstado$1.class
@@ -35,7 +36,6 @@ com\mycompany\modelo\ModPessoa.class
 com\mycompany\modelo\ModEstado.class
 com\mycompany\visao\cidade\CadCidade$4.class
 com\mycompany\visao\pais\CadPais$5.class
-com\mycompany\visao\outros\MenuPrincipal$13.class
 com\mycompany\visao\cidade\ListCidade.class
 com\mycompany\visao\endereco\CadEndereco.class
 com\mycompany\visao\pessoa\CadPessoa$3.class
@@ -45,7 +45,6 @@ com\mycompany\visao\cidade\ListCidade$1.class
 com\mycompany\visao\estado\ListEstado$1.class
 com\mycompany\visao\pais\CadPais$1.class
 com\mycompany\visao\cidade\CadCidade$1.class
-com\mycompany\visao\outros\MenuPrincipal$12.class
 com\mycompany\dao\DaoCidade.class
 com\mycompany\visao\cidade\ListCidade$2.class
 com\mycompany\ferramentas\Constantes.class

@@ -226,8 +226,7 @@ public class CadPais extends javax.swing.JFrame {
             
             tfId.setText(String.valueOf(daoPais.buscarProximoId()));
             tfNome.setText("");
-        }
-        else if (btnAcao.getText() == Constantes.BTN_ALTERAR_TEXT){
+        }else if (btnAcao.getText() == Constantes.BTN_ALTERAR_TEXT){
             alterar();
             ((ListPais) Formularios.listPais).listarTodos();
             dispose();
