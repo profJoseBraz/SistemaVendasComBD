@@ -96,6 +96,16 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnExcluir" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <Component id="jLabel12" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
+                              <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jcbCidade" alignment="0" min="-2" pref="206" max="-2" attributes="0"/>
+                              <Component id="jLabel9" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
+                              <Component id="jLabel13" alignment="0" min="-2" pref="43" max="-2" attributes="0"/>
+                              <Component id="jcbEstadoCivil" alignment="0" min="-2" pref="189" max="-2" attributes="0"/>
+                              <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="tfId" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
@@ -107,17 +117,9 @@
                                   <Component id="tfIdEstadoCivil" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="tfIdCidade" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="tfIdCliente" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jLabel12" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
-                              <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jcbCidade" alignment="0" min="-2" pref="206" max="-2" attributes="0"/>
-                              <Component id="jLabel9" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
-                              <Component id="jLabel13" alignment="0" min="-2" pref="43" max="-2" attributes="0"/>
-                              <Component id="jcbEstadoCivil" alignment="0" min="-2" pref="189" max="-2" attributes="0"/>
-                              <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -137,6 +139,7 @@
                       <Component id="tfIdEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="tfIdEstadoCivil" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="tfIdCidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tfIdCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
@@ -382,6 +385,11 @@
               <Font name="Segoe UI" size="12" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Pessoa"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="tfIdCliente">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="idCliente"/>
           </Properties>
         </Component>
       </SubComponents>

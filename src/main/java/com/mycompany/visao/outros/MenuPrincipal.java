@@ -16,6 +16,8 @@ import com.mycompany.visao.pais.CadPais;
 import com.mycompany.visao.pais.ListPais;
 import com.mycompany.visao.pessoa.CadPessoa;
 import com.mycompany.visao.pessoa.ListPessoa;
+import com.mycompany.visao.produto.CadProduto;
+import com.mycompany.visao.produto.ListProduto;
 import javax.swing.JOptionPane;
 
 /**
@@ -53,15 +55,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mnCadastro = new javax.swing.JMenu();
         miCadastroCategoria = new javax.swing.JMenuItem();
         miCadastroCidade = new javax.swing.JMenuItem();
-        miCadastroPais = new javax.swing.JMenuItem();
         miCadastroEstado = new javax.swing.JMenuItem();
+        miCadastroPais = new javax.swing.JMenuItem();
         miCadastroPessoa = new javax.swing.JMenuItem();
+        miCadastroProduto = new javax.swing.JMenuItem();
         mnConsulta = new javax.swing.JMenu();
         miConsultaCategoria = new javax.swing.JMenuItem();
         miConsultaCidade = new javax.swing.JMenuItem();
-        miConsultaPais = new javax.swing.JMenuItem();
         miConsultaEstado = new javax.swing.JMenuItem();
+        miConsultaPais = new javax.swing.JMenuItem();
         miConsultaPessoa = new javax.swing.JMenuItem();
+        miConsultaProduto = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SISTEMA DE VENDAS - PROGRAMADOR DE SISTEMAS 2023 | v. 1.0.0.3");
@@ -84,14 +88,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         mnCadastro.add(miCadastroCidade);
 
-        miCadastroPais.setText("Pais");
-        miCadastroPais.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                miCadastroPaisActionPerformed(evt);
-            }
-        });
-        mnCadastro.add(miCadastroPais);
-
         miCadastroEstado.setText("Estado");
         miCadastroEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,6 +96,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         mnCadastro.add(miCadastroEstado);
 
+        miCadastroPais.setText("Pais");
+        miCadastroPais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miCadastroPaisActionPerformed(evt);
+            }
+        });
+        mnCadastro.add(miCadastroPais);
+
         miCadastroPessoa.setText("Pessoa");
         miCadastroPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,6 +111,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         mnCadastro.add(miCadastroPessoa);
+
+        miCadastroProduto.setText("Produto");
+        miCadastroProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miCadastroProdutoActionPerformed(evt);
+            }
+        });
+        mnCadastro.add(miCadastroProduto);
 
         menuBar.add(mnCadastro);
 
@@ -128,14 +140,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         mnConsulta.add(miConsultaCidade);
 
-        miConsultaPais.setText("Pais");
-        miConsultaPais.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                miConsultaPaisActionPerformed(evt);
-            }
-        });
-        mnConsulta.add(miConsultaPais);
-
         miConsultaEstado.setText("Estado");
         miConsultaEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,6 +148,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         mnConsulta.add(miConsultaEstado);
 
+        miConsultaPais.setText("Pais");
+        miConsultaPais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miConsultaPaisActionPerformed(evt);
+            }
+        });
+        mnConsulta.add(miConsultaPais);
+
         miConsultaPessoa.setText("Pessoa");
         miConsultaPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,6 +163,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         mnConsulta.add(miConsultaPessoa);
+
+        miConsultaProduto.setText("Produto");
+        miConsultaProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miConsultaProdutoActionPerformed(evt);
+            }
+        });
+        mnConsulta.add(miConsultaProduto);
 
         menuBar.add(mnConsulta);
 
@@ -240,6 +260,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Formularios.listPessoa.setVisible(true);
     }//GEN-LAST:event_miConsultaPessoaActionPerformed
 
+    private void miCadastroProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCadastroProdutoActionPerformed
+        if (Formularios.cadProduto == null)
+            Formularios.cadProduto = new CadProduto();
+        
+        Formularios.cadProduto.setVisible(true);
+    }//GEN-LAST:event_miCadastroProdutoActionPerformed
+
+    private void miConsultaProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miConsultaProdutoActionPerformed
+        if (Formularios.listProduto == null)
+            Formularios.listProduto = new ListProduto();
+        
+        Formularios.listProduto.setVisible(true);
+    }//GEN-LAST:event_miConsultaProdutoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -267,7 +301,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* CreatemiConsultaProduto and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MenuPrincipal().setVisible(true);
@@ -282,11 +316,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem miCadastroEstado;
     private javax.swing.JMenuItem miCadastroPais;
     private javax.swing.JMenuItem miCadastroPessoa;
+    private javax.swing.JMenuItem miCadastroProduto;
     private javax.swing.JMenuItem miConsultaCategoria;
     private javax.swing.JMenuItem miConsultaCidade;
     private javax.swing.JMenuItem miConsultaEstado;
     private javax.swing.JMenuItem miConsultaPais;
     private javax.swing.JMenuItem miConsultaPessoa;
+    private javax.swing.JMenuItem miConsultaProduto;
     private javax.swing.JMenu mnCadastro;
     private javax.swing.JMenu mnConsulta;
     // End of variables declaration//GEN-END:variables

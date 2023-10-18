@@ -5,11 +5,13 @@
 package com.mycompany.visao.pessoa;
 
 import com.mycompany.dao.DaoCidade;
+import com.mycompany.dao.DaoCliente;
 import com.mycompany.dao.DaoEndereco;
 import com.mycompany.dao.DaoEstadoCivil;
 import com.mycompany.dao.DaoPessoa;
 import com.mycompany.ferramentas.DadosTemporarios;
 import com.mycompany.ferramentas.Formularios;
+import com.mycompany.modelo.ModCliente;
 import com.mycompany.modelo.ModEndereco;
 import com.mycompany.modelo.ModPessoa;
 import com.mycompany.visao.endereco.CadEndereco;
@@ -509,7 +511,7 @@ public class ListPessoa extends javax.swing.JFrame {
     private void tablePessoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablePessoaMouseClicked
         try{
             if (evt.getClickCount() == 2){
-                //Guarda os dados da pessoa
+                //Pega os dados da pessoa
                 ModPessoa modPessoa = new ModPessoa();
 
                 modPessoa.setId(Integer.parseInt(String.valueOf(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 0))));
@@ -521,6 +523,7 @@ public class ListPessoa extends javax.swing.JFrame {
                 modPessoa.setTelefone(String.valueOf(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 8)));
                 modPessoa.setEmail(String.valueOf(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 9)));
                 
+                //
                 DaoEndereco daoEndereco = new DaoEndereco();
                 ResultSet resultSet = daoEndereco.listarPorId(Integer.parseInt(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 0).toString()));
 
@@ -529,7 +532,9 @@ public class ListPessoa extends javax.swing.JFrame {
                     idEndereco = resultSet.getInt("ID");
 
                 modPessoa.setIdEndereco(idEndereco);
+                //
                 
+                //
                 DaoEstadoCivil daoEstadoCivil = new DaoEstadoCivil();
                 resultSet = daoEstadoCivil.listarPorNome(String.valueOf(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 10)));
 
@@ -540,15 +545,30 @@ public class ListPessoa extends javax.swing.JFrame {
                 modPessoa.setIdEstadoCivil(idEstadoCivil);
                 //
                 
-                //Guarda os dados do endereço
+                //Pega os dados do endereço
                 ModEndereco modEndereco = new ModEndereco();
                 
                 modEndereco.setNomeRua(String.valueOf(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 2)));
                 modEndereco.setCep(String.valueOf(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 3)));
                 modEndereco.setNumeroResidencia(String.valueOf(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 4)));
+                //
+                
+                //
+                DaoCliente daoCliente = new DaoCliente();
+                resultSet = daoCliente.listarPorIdPessoa(Integer.parseInt(String.valueOf(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 0))));
+
+                ModCliente modCliente = new ModCliente();
+                
+                int idCliente = -1;
+                while(resultSet.next())
+                    idCliente = resultSet.getInt("ID");
+                
+                modCliente.setId(idCliente);
+                //
                 
                 DadosTemporarios.tempObject = (ModPessoa) modPessoa;
                 DadosTemporarios.tempObject2 = (ModEndereco) modEndereco;
+                DadosTemporarios.tempObject3 = (ModCliente) modCliente;
                 
                 CadPessoa cadPessoa = new CadPessoa();
                 cadPessoa.setVisible(true);

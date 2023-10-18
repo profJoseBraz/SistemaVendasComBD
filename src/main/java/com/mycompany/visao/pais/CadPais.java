@@ -5,6 +5,7 @@
 package com.mycompany.visao.pais;
 
 import com.mycompany.dao.DaoCategoria;
+import com.mycompany.dao.DaoEstado;
 import com.mycompany.dao.DaoPais;
 import com.mycompany.ferramentas.Constantes;
 import com.mycompany.ferramentas.DadosTemporarios;
@@ -12,6 +13,7 @@ import com.mycompany.ferramentas.Formularios;
 import com.mycompany.modelo.ModCategoria;
 import com.mycompany.modelo.ModPais;
 import com.mycompany.visao.categoria.ListCategoria;
+import com.mycompany.visao.estado.CadEstado;
 import javax.swing.JOptionPane;
 
 /**
@@ -226,6 +228,12 @@ public class CadPais extends javax.swing.JFrame {
             
             tfId.setText(String.valueOf(daoPais.buscarProximoId()));
             tfNome.setText("");
+            
+            if(Formularios.cadEstado != null){
+                ((CadEstado) Formularios.cadEstado).carregarPaises();
+                dispose();
+            }
+            
         }else if (btnAcao.getText() == Constantes.BTN_ALTERAR_TEXT){
             alterar();
             ((ListPais) Formularios.listPais).listarTodos();

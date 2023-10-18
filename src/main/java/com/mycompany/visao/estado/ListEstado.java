@@ -4,14 +4,11 @@
  */
 package com.mycompany.visao.estado;
 
-import com.mycompany.dao.DaoCidade;
 import com.mycompany.dao.DaoEstado;
 import com.mycompany.dao.DaoPais;
 import com.mycompany.ferramentas.DadosTemporarios;
 import com.mycompany.ferramentas.Formularios;
-import com.mycompany.modelo.ModCidade;
 import com.mycompany.modelo.ModEstado;
-import com.mycompany.visao.cidade.CadCidade;
 import java.sql.ResultSet;
 import javax.swing.table.DefaultTableModel;
 
@@ -259,7 +256,7 @@ public class ListEstado extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosed
 
     private void tableEstadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableEstadoMouseClicked
-         try{
+        try{
             if (evt.getClickCount() == 2){
                 ModEstado modEstado = new ModEstado();
 
