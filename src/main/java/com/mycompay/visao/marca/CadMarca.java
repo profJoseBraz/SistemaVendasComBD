@@ -228,7 +228,7 @@ public class CadMarca extends javax.swing.JFrame {
         int escolha = 
                 JOptionPane.showConfirmDialog(
                         null, 
-                        "Deseja realmente excluir a marca" + tfNome.getText() + "?");
+                        "Deseja realmente excluir a marca " + tfNome.getText() + "?");
         
         if(escolha == JOptionPane.YES_OPTION)
             excluir();
