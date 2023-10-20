@@ -18,6 +18,8 @@ import com.mycompany.visao.pessoa.CadPessoa;
 import com.mycompany.visao.pessoa.ListPessoa;
 import com.mycompany.visao.produto.CadProduto;
 import com.mycompany.visao.produto.ListProduto;
+import com.mycompay.visao.marca.CadMarca;
+import com.mycompay.visao.marca.ListMarca;
 import javax.swing.JOptionPane;
 
 /**
@@ -59,6 +61,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         miCadastroPais = new javax.swing.JMenuItem();
         miCadastroPessoa = new javax.swing.JMenuItem();
         miCadastroProduto = new javax.swing.JMenuItem();
+        miCadastroMarca = new javax.swing.JMenuItem();
         mnConsulta = new javax.swing.JMenu();
         miConsultaCategoria = new javax.swing.JMenuItem();
         miConsultaCidade = new javax.swing.JMenuItem();
@@ -66,6 +69,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         miConsultaPais = new javax.swing.JMenuItem();
         miConsultaPessoa = new javax.swing.JMenuItem();
         miConsultaProduto = new javax.swing.JMenuItem();
+        miConsultaMarca = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SISTEMA DE VENDAS - PROGRAMADOR DE SISTEMAS 2023 | v. 1.0.0.3");
@@ -120,6 +124,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         mnCadastro.add(miCadastroProduto);
 
+        miCadastroMarca.setText("Marca");
+        miCadastroMarca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miCadastroMarcaActionPerformed(evt);
+            }
+        });
+        mnCadastro.add(miCadastroMarca);
+
         menuBar.add(mnCadastro);
 
         mnConsulta.setText("Consultas");
@@ -171,6 +183,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         mnConsulta.add(miConsultaProduto);
+
+        miConsultaMarca.setText("Marca");
+        miConsultaMarca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miConsultaMarcaActionPerformed(evt);
+            }
+        });
+        mnConsulta.add(miConsultaMarca);
 
         menuBar.add(mnConsulta);
 
@@ -274,6 +294,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Formularios.listProduto.setVisible(true);
     }//GEN-LAST:event_miConsultaProdutoActionPerformed
 
+    private void miCadastroMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCadastroMarcaActionPerformed
+        if (Formularios.cadMarca == null)
+            Formularios.cadMarca = new CadMarca();
+        
+        Formularios.cadMarca.setVisible(true);
+    }//GEN-LAST:event_miCadastroMarcaActionPerformed
+
+    private void miConsultaMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miConsultaMarcaActionPerformed
+        if (Formularios.listMarca == null)
+            Formularios.listMarca = new ListMarca();
+        
+        Formularios.listMarca.setVisible(true);
+    }//GEN-LAST:event_miConsultaMarcaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -314,12 +348,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem miCadastroCategoria;
     private javax.swing.JMenuItem miCadastroCidade;
     private javax.swing.JMenuItem miCadastroEstado;
+    private javax.swing.JMenuItem miCadastroMarca;
     private javax.swing.JMenuItem miCadastroPais;
     private javax.swing.JMenuItem miCadastroPessoa;
     private javax.swing.JMenuItem miCadastroProduto;
     private javax.swing.JMenuItem miConsultaCategoria;
     private javax.swing.JMenuItem miConsultaCidade;
     private javax.swing.JMenuItem miConsultaEstado;
+    private javax.swing.JMenuItem miConsultaMarca;
     private javax.swing.JMenuItem miConsultaPais;
     private javax.swing.JMenuItem miConsultaPessoa;
     private javax.swing.JMenuItem miConsultaProduto;

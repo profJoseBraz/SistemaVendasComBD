@@ -1,8 +1,10 @@
 com\mycompany\visao\outros\MenuPrincipal$7.class
 com\mycompany\visao\estado\CadEstado$4.class
 com\mycompany\visao\cidade\CadCidade$8.class
+com\mycompay\visao\marca\ListMarca$3.class
 com\mycompany\visao\estado\CadEstado.class
 com\mycompany\modelo\ModEndereco.class
+com\mycompay\visao\marca\ListMarca.class
 com\mycompany\visao\estado\CadEstado$1.class
 com\mycompany\dao\DaoCategoria.class
 com\mycompany\visao\cidade\CadCidade$5.class
@@ -30,6 +32,8 @@ com\mycompany\dao\DaoCliente.class
 com\mycompany\dao\DaoProduto.class
 com\mycompany\visao\cidade\CadCidade$3.class
 com\mycompany\visao\produto\CadProduto$2.class
+com\mycompay\visao\marca\CadMarca$3.class
+com\mycompay\visao\marca\ListMarca$5.class
 com\mycompany\visao\outros\MenuPrincipal$5.class
 com\mycompany\visao\pais\ListPais$1.class
 com\mycompany\visao\categoria\ListCategoria.class
@@ -38,7 +42,9 @@ com\mycompany\modelo\ModPais.class
 com\mycompany\visao\pais\ListPais$5.class
 com\mycompany\visao\pessoa\CadPessoa$2.class
 com\mycompany\visao\produto\ListProduto$3.class
+com\mycompany\modelo\ModMarca.class
 com\mycompany\visao\categoria\ListCategoria$5.class
+com\mycompany\visao\outros\MenuPrincipal$14.class
 com\mycompany\visao\endereco\ListEndereco$4.class
 com\mycompany\visao\endereco\CadEndereco$5.class
 com\mycompany\modelo\ModPessoa.class
@@ -47,6 +53,7 @@ com\mycompany\modelo\ModEstado.class
 com\mycompany\visao\cidade\CadCidade$4.class
 com\mycompany\visao\produto\ListProduto$4.class
 com\mycompany\visao\pais\CadPais$5.class
+com\mycompay\visao\marca\CadMarca$2.class
 com\mycompany\visao\outros\MenuPrincipal$13.class
 com\mycompany\visao\cidade\ListCidade.class
 com\mycompany\visao\endereco\CadEndereco.class
@@ -68,6 +75,8 @@ com\mycompany\ferramentas\Constantes.class
 com\mycompany\visao\cidade\CadCidade.class
 com\mycompany\visao\estado\CadEstado$5.class
 com\mycompany\visao\outros\MenuPrincipal$6.class
+com\mycompay\visao\marca\ListMarca$4.class
+com\mycompay\visao\marca\CadMarca.class
 com\mycompany\ferramentas\DadosTemporarios.class
 com\mycompany\visao\estado\ListEstado$4.class
 com\mycompany\visao\cidade\CadCidade$6.class
@@ -76,10 +85,13 @@ com\mycompany\modelo\ModCategoria.class
 com\mycompany\visao\pais\CadPais$4.class
 com\mycompany\sistemavendas\SistemaVendas.class
 com\mycompany\visao\estado\CadEstado$2.class
+com\mycompay\visao\marca\CadMarca$1.class
 com\mycompany\visao\outros\MenuPrincipal.class
 com\mycompany\dao\DaoEstado.class
 com\mycompany\modelo\ModCidade.class
 com\mycompany\visao\endereco\CadEndereco$4.class
+com\mycompay\visao\marca\CadMarca$4.class
+com\mycompany\visao\outros\MenuPrincipal$15.class
 com\mycompany\visao\outros\MenuPrincipal$3.class
 com\mycompany\visao\outros\MenuPrincipal$10.class
 com\mycompany\visao\categoria\ListCategoria$2.class
@@ -103,6 +115,7 @@ com\mycompany\visao\pais\CadPais$3.class
 com\mycompany\visao\estado\CadEstado$3.class
 com\mycompany\visao\cidade\ListCidade$5.class
 com\mycompany\visao\estado\ListEstado$2.class
+com\mycompay\visao\marca\ListMarca$1.class
 com\mycompany\visao\cidade\CadCidade$7.class
 com\mycompany\visao\endereco\CadEndereco$2.class
 com\mycompany\visao\pais\CadPais$2.class
@@ -112,6 +125,7 @@ com\mycompany\visao\pessoa\ListPessoa.class
 com\mycompany\visao\categoria\ListCategoria$3.class
 com\mycompany\visao\outros\MenuPrincipal$1.class
 com\mycompany\dao\DaoEstadoCivil.class
+com\mycompay\visao\marca\ListMarca$2.class
 com\mycompany\visao\cidade\ListCidade$4.class
 com\mycompany\visao\endereco\ListEndereco$2.class
 com\mycompany\visao\estado\ListEstado$3.class
