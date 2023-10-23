@@ -50,4 +50,11 @@ public class Formularios {
     //Estado civil
     public static JFrame cadEstadoCivil;
     public static JFrame listEstadoCivil;
+    
+    //Front End
+    //Menu principal
+    public static JFrame menuPrincipalFrontEnd;
+    
+    //Tela de login
+    public static JFrame telaLogin;
 }

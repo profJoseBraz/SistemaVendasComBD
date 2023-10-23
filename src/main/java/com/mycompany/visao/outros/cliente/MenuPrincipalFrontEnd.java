@@ -6,6 +6,10 @@ package com.mycompany.visao.outros.cliente;
 
 import com.mycompany.dao.DaoProduto;
 import com.mycompany.ferramentas.BancoDeDadosMySql;
+import com.mycompany.ferramentas.Constantes;
+import com.mycompany.ferramentas.DadosTemporarios;
+import com.mycompany.ferramentas.Formularios;
+import com.mycompany.visao.cidade.CadCidade;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -15,13 +19,15 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author 10156
  */
-public class MenuPrincipal extends javax.swing.JFrame {
+public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
 
     /**
      * Creates new form MenuPrincipal
      */
-    public MenuPrincipal() {
+    public MenuPrincipalFrontEnd() {
         initComponents();
+        
+        Formularios.menuPrincipalFrontEnd = this;
         
         setLocationRelativeTo(null);
         
@@ -31,6 +37,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Não foi possível conectar ao banco de dados. O sistema será finalizado.");
             System.exit(0);
         }
+        
+        labelUsuarioLogado.setText("");
     }
 
     public void listarTodos(){
@@ -81,6 +89,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
     }
     
+    public void verificaUsuarioLogado(){
+        if(!DadosTemporarios.usuarioLogado.equals("")){
+            labelUsuarioLogado.setText(Constantes.PREFIXO_USUARIO_LOGADO + DadosTemporarios.usuarioLogado);
+            
+            labelEntrar.setText(Constantes.LABEL_SAIR);
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -92,9 +108,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        labelCadastrar = new javax.swing.JLabel();
+        labelEntrar = new javax.swing.JLabel();
+        labelCarrinhoCompras = new javax.swing.JLabel();
+        labelUsuarioLogado = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         tfPesquisaProduto = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -110,14 +127,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 87, 87));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Symbol", 1, 12)); // NOI18N
-        jLabel1.setText("Cadastrar");
+        labelCadastrar.setFont(new java.awt.Font("Segoe UI Symbol", 1, 12)); // NOI18N
+        labelCadastrar.setText("Cadastrar   |");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Symbol", 1, 12)); // NOI18N
-        jLabel2.setText("Entrar");
+        labelEntrar.setFont(new java.awt.Font("Segoe UI Symbol", 1, 12)); // NOI18N
+        labelEntrar.setText("Entrar");
+        labelEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelEntrarMouseClicked(evt);
+            }
+        });
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Symbol", 1, 12)); // NOI18N
-        jLabel3.setText("Carrinho de compras");
+        labelCarrinhoCompras.setFont(new java.awt.Font("Segoe UI Symbol", 1, 12)); // NOI18N
+        labelCarrinhoCompras.setText("Carrinho de compras");
+
+        labelUsuarioLogado.setFont(new java.awt.Font("Segoe UI Symbol", 1, 12)); // NOI18N
+        labelUsuarioLogado.setText("|   Usuário logado");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -125,11 +150,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelCarrinhoCompras)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelUsuarioLogado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(63, 63, 63)
+                .addComponent(labelCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -137,9 +164,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(labelCadastrar)
+                    .addComponent(labelEntrar)
+                    .addComponent(labelCarrinhoCompras)
+                    .addComponent(labelUsuarioLogado))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -181,10 +209,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         tableProduto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tableProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Produto", "Preço"
@@ -198,7 +223,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tableProduto.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tableProduto);
+        if (tableProduto.getColumnModel().getColumnCount() > 0) {
+            tableProduto.getColumnModel().getColumn(0).setResizable(false);
+            tableProduto.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -213,14 +243,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 87, 87));
 
         jButton2.setFont(new java.awt.Font("Segoe UI Symbol", 1, 24)); // NOI18N
-        jButton2.setText("Adicionar ao carringo de compras");
+        jButton2.setText("Adicionar ao carrinho de compras");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -256,10 +286,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -293,6 +323,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
             listarPorProduto(tfPesquisaProduto.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void labelEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelEntrarMouseClicked
+        if(labelEntrar.getText().equals(Constantes.LABEL_ENTRAR)){
+            if (Formularios.telaLogin == null)
+                Formularios.telaLogin = new TelaLogin();
+
+            Formularios.telaLogin.setVisible(true);
+        }else{
+            int escolha = 
+                JOptionPane.showConfirmDialog(
+                        null, 
+                        Constantes.PERGUNTA_ENCERRAR_SESSAO);
+        
+            if(escolha == JOptionPane.YES_OPTION){
+                DadosTemporarios.idUsuarioLogado = -1;
+                DadosTemporarios.usuarioLogado = "";
+                labelEntrar.setText(Constantes.LABEL_ENTRAR);
+                labelUsuarioLogado.setText("");
+            }
+        }
+    }//GEN-LAST:event_labelEntrarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -310,20 +361,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuPrincipalFrontEnd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuPrincipalFrontEnd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuPrincipalFrontEnd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuPrincipalFrontEnd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuPrincipal().setVisible(true);
+                new MenuPrincipalFrontEnd().setVisible(true);
             }
         });
     }
@@ -331,15 +383,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelCadastrar;
+    private javax.swing.JLabel labelCarrinhoCompras;
+    private javax.swing.JLabel labelEntrar;
+    private javax.swing.JLabel labelUsuarioLogado;
     private javax.swing.JTable tableProduto;
     private javax.swing.JTextField tfPesquisaProduto;
     // End of variables declaration//GEN-END:variables

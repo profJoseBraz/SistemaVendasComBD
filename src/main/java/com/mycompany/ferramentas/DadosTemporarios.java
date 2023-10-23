@@ -12,4 +12,7 @@ public class DadosTemporarios {
     public static Object tempObject;
     public static Object tempObject2;
     public static Object tempObject3;
+    
+    public static int idUsuarioLogado;
+    public static String usuarioLogado;
 }
