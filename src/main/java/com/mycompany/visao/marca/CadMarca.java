@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompay.visao.marca;
+package com.mycompany.visao.marca;
 
 import com.mycompany.dao.DaoMarca;
 import com.mycompany.dao.DaoPais;

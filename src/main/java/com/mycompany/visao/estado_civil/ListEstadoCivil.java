@@ -10,7 +10,7 @@ import com.mycompany.ferramentas.DadosTemporarios;
 import com.mycompany.ferramentas.Formularios;
 import com.mycompany.modelo.ModEstadoCivil;
 import com.mycompany.modelo.ModMarca;
-import com.mycompay.visao.marca.CadMarca;
+import com.mycompany.visao.marca.CadMarca;
 import java.sql.ResultSet;
 import javax.swing.table.DefaultTableModel;
 

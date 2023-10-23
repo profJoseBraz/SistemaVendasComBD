@@ -12,7 +12,7 @@ import com.mycompany.ferramentas.Formularios;
 import com.mycompany.modelo.ModEndereco;
 import com.mycompany.modelo.ModEstadoCivil;
 import com.mycompany.modelo.ModMarca;
-import com.mycompay.visao.marca.ListMarca;
+import com.mycompany.visao.marca.ListMarca;
 import javax.swing.JOptionPane;
 
 /**

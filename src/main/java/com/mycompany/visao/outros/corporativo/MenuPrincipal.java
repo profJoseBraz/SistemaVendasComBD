@@ -21,8 +21,8 @@ import com.mycompany.visao.pessoa.CadPessoa;
 import com.mycompany.visao.pessoa.ListPessoa;
 import com.mycompany.visao.produto.CadProduto;
 import com.mycompany.visao.produto.ListProduto;
-import com.mycompay.visao.marca.CadMarca;
-import com.mycompay.visao.marca.ListMarca;
+import com.mycompany.visao.marca.CadMarca;
+import com.mycompany.visao.marca.ListMarca;
 import javax.swing.JOptionPane;
 
 /**
