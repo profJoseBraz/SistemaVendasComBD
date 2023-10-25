@@ -57,4 +57,7 @@ public class Formularios {
     
     //Tela de login
     public static JFrame telaLogin;
+    
+    //Tela de venda
+    public static JFrame telaVenda;
 }

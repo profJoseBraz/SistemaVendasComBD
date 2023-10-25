@@ -6,6 +6,7 @@ package com.mycompany.visao.outros.cliente;
 
 import com.mycompany.dao.DaoPedido;
 import com.mycompany.ferramentas.DadosTemporarios;
+import com.mycompany.ferramentas.Formularios;
 import com.mycompany.modelo.ModPais;
 import com.mycompany.modelo.ModProduto;
 import java.time.LocalDateTime;
@@ -23,6 +24,8 @@ public class TelaVenda extends javax.swing.JFrame {
      */
     public TelaVenda() {
         initComponents();
+        
+        setLocationRelativeTo(null);
         
         existeDadosTemporarios();
         
@@ -53,6 +56,8 @@ public class TelaVenda extends javax.swing.JFrame {
             labelMarcaProduto.setText(marca);
             
             DadosTemporarios.tempObject = null;
+            DadosTemporarios.categoriaProdutoVenda = null;
+            DadosTemporarios.marcaProdutoVenda = null;
             
             return true;
         }else
@@ -121,6 +126,12 @@ public class TelaVenda extends javax.swing.JFrame {
         tfIdCliente = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Compras");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         tfIdPedido.setText("idPedido");
 
@@ -350,6 +361,10 @@ public class TelaVenda extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Houve um problema ao tentar salvar o pedido!");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        Formularios.telaVenda = null;
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments

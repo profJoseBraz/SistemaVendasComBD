@@ -13,6 +13,7 @@ import com.mycompany.modelo.ModPais;
 import com.mycompany.modelo.ModProduto;
 import com.mycompany.visao.cidade.CadCidade;
 import com.mycompany.visao.pais.CadPais;
+import com.mycompany.visao.pessoa.CadPessoa;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.sql.ResultSet;
 import javax.swing.DefaultButtonModel;
@@ -130,6 +131,11 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
 
         labelCadastrar.setFont(new java.awt.Font("Segoe UI Symbol", 1, 12)); // NOI18N
         labelCadastrar.setText("Cadastrar   |");
+        labelCadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelCadastrarMouseClicked(evt);
+            }
+        });
 
         labelEntrar.setFont(new java.awt.Font("Segoe UI Symbol", 1, 12)); // NOI18N
         labelEntrar.setText("Entrar");
@@ -351,13 +357,22 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
                 DadosTemporarios.categoriaProdutoVenda = categoria;
                 DadosTemporarios.marcaProdutoVenda = marca;
                 
-                TelaVenda telaVenda = new TelaVenda();
-                telaVenda.setVisible(true);
+                if (Formularios.telaVenda == null)
+                    Formularios.telaVenda = new TelaVenda();
+
+                Formularios.telaVenda.setVisible(true);
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_tableProdutoMouseClicked
+
+    private void labelCadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelCadastrarMouseClicked
+        if (Formularios.cadPessoa == null)
+            Formularios.cadPessoa = new CadPessoa();
+
+        Formularios.cadPessoa.setVisible(true);
+    }//GEN-LAST:event_labelCadastrarMouseClicked
 
     /**
      * @param args the command line arguments

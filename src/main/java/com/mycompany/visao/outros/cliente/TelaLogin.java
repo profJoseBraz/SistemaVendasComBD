@@ -4,6 +4,7 @@
  */
 package com.mycompany.visao.outros.cliente;
 
+import com.mycompany.dao.DaoCliente;
 import com.mycompany.dao.DaoPessoa;
 import com.mycompany.ferramentas.Constantes;
 import com.mycompany.ferramentas.DadosTemporarios;
@@ -47,6 +48,7 @@ public class TelaLogin extends javax.swing.JFrame {
         pfSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Informe seu usuário e senha");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
@@ -168,7 +170,11 @@ public class TelaLogin extends javax.swing.JFrame {
                 
                 JOptionPane.showMessageDialog(null, "Bem-vindo(a), " + tfUsuario.getText());
                 
-                DadosTemporarios.idUsuarioLogado = id;
+                ResultSet resultSetCliente = new DaoCliente().listarPorIdPessoa(id);
+                resultSetCliente.next();
+                int idCliente = resultSetCliente.getInt("ID");
+                
+                DadosTemporarios.idUsuarioLogado = idCliente;
                 DadosTemporarios.usuarioLogado = tfUsuario.getText();
                 
                 ((MenuPrincipalFrontEnd) Formularios.menuPrincipalFrontEnd).verificaUsuarioLogado();
