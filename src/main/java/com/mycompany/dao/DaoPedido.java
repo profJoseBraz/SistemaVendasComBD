@@ -13,6 +13,27 @@ import java.sql.ResultSet;
 public class DaoPedido extends BancoDeDadosMySql{
     private String sql;
     
+    public Boolean inserir(int id, int idCliente, int idProduto, String dataPedido, int quantidade){
+        try{
+            sql = "INSERT INTO PEDIDO (ID, ID_CLIENTE, ID_PRODUTO, DATA_PEDIDO, QUANTIDADE) VALUES (?, ?, ?, ?, ?)";
+            
+            setStatement(getConexao().prepareStatement(sql));
+            
+            getStatement().setInt(1, id);
+            getStatement().setInt(2, idCliente);
+            getStatement().setInt(3, idProduto);
+            getStatement().setString(4, dataPedido);
+            getStatement().setInt(5, quantidade);
+            
+            getStatement().executeUpdate();
+            
+            return true;
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
     public ResultSet listarTodos(){
         try{
             sql = 
@@ -370,5 +391,25 @@ public class DaoPedido extends BancoDeDadosMySql{
         }
         
         return getResultado();
+    }
+    
+    public int buscarProximoId(){
+        int id = 0;
+        
+        try{
+            sql = "SELECT IFNULL(MAX(ID), 0) + 1 FROM PEDIDO";
+            
+            setStatement(getConexao().prepareStatement(sql));
+            
+            setResultado(getStatement().executeQuery());
+            
+            getResultado().next(); //Move para o primeiro registro.
+            
+            id = getResultado().getInt(1); //Pega o valor retornado na consulta
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        
+        return id;
     }
 }

@@ -18,7 +18,7 @@ public class Constantes {
     public static String LABEL_ENTRAR = "Entrar";
     public static String LABEL_SAIR = "Sair";
     public static String PERGUNTA_ENCERRAR_SESSAO = "Deseja realmete sair?";
-    public static String PREFIXO_USUARIO_LOGADO = "|   Usuário logado: ";
+    public static String PREFIXO_USUARIO_LOGADO = "Usuário logado: ";
     //
     
     //Tela login

@@ -36,6 +36,7 @@ com\mycompany\visao\categoria\CadCategoria$1.class
 com\mycompany\visao\cidade\ListCidade$3.class
 com\mycompany\visao\outros\corporativo\MenuPrincipal$10.class
 com\mycompany\visao\categoria\ListCategoria$4.class
+com\mycompany\visao\outros\cliente\TelaVenda.class
 com\mycompany\visao\pessoa\CadPessoa$1.class
 com\mycompany\dao\DaoCliente.class
 com\mycompany\visao\outros\corporativo\MenuPrincipal$8.class
@@ -44,6 +45,7 @@ com\mycompany\visao\cidade\CadCidade$3.class
 com\mycompany\visao\marca\CadMarca$3.class
 com\mycompany\visao\produto\CadProduto$2.class
 com\mycompany\visao\outros\cliente\MenuPrincipalFrontEnd$4.class
+com\mycompany\visao\outros\cliente\TelaVenda$4.class
 com\mycompany\visao\outros\corporativo\MenuPrincipal$11.class
 com\mycompany\visao\outros\cliente\TelaLogin$1.class
 com\mycompany\visao\pais\ListPais$1.class
@@ -68,6 +70,7 @@ com\mycompany\visao\produto\CadProduto$3.class
 com\mycompany\modelo\ModEstado.class
 com\mycompany\visao\outros\cliente\TelaLogin$2.class
 com\mycompany\visao\outros\corporativo\MenuPrincipal$3.class
+com\mycompany\visao\outros\cliente\MenuPrincipalFrontEnd$5.class
 com\mycompany\visao\cidade\CadCidade$4.class
 com\mycompany\visao\produto\ListProduto$4.class
 com\mycompany\visao\outros\corporativo\MenuPrincipal$12.class
@@ -102,6 +105,7 @@ com\mycompany\visao\outros\cliente\MenuPrincipalFrontEnd$2.class
 com\mycompany\visao\cidade\CadCidade.class
 com\mycompany\visao\estado\CadEstado$5.class
 com\mycompany\visao\pedido\ListPedido$1.class
+com\mycompany\visao\outros\cliente\TelaVenda$3.class
 com\mycompany\visao\outros\corporativo\MenuPrincipal$17.class
 com\mycompany\visao\outros\corporativo\MenuPrincipal$1.class
 com\mycompany\ferramentas\DadosTemporarios.class
@@ -135,6 +139,7 @@ com\mycompany\visao\pessoa\CadPessoa$5.class
 com\mycompany\visao\endereco\ListEndereco$3.class
 com\mycompany\visao\categoria\CadCategoria$2.class
 com\mycompany\ferramentas\BancoDeDadosMySql.class
+com\mycompany\visao\outros\cliente\TelaVenda$1.class
 com\mycompany\dao\DaoMarca.class
 com\mycompany\visao\endereco\ListEndereco.class
 com\mycompany\visao\outros\corporativo\MenuPrincipal$7.class
@@ -154,6 +159,7 @@ com\mycompany\visao\pais\CadPais.class
 com\mycompany\visao\pessoa\ListPessoa.class
 com\mycompany\visao\categoria\ListCategoria$3.class
 com\mycompany\dao\DaoEstadoCivil.class
+com\mycompany\visao\outros\cliente\TelaVenda$2.class
 com\mycompany\visao\outros\cliente\MenuPrincipalFrontEnd$1.class
 com\mycompany\visao\cidade\ListCidade$4.class
 com\mycompany\visao\endereco\ListEndereco$2.class
