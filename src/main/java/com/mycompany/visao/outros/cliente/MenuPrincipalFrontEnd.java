@@ -16,8 +16,11 @@ import com.mycompany.visao.pais.CadPais;
 import com.mycompany.visao.pessoa.CadPessoa;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.sql.ResultSet;
+import java.text.NumberFormat;
+import java.util.Locale;
 import javax.swing.DefaultButtonModel;
 import javax.swing.JOptionPane;
+import javax.swing.JRootPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -83,6 +86,7 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
             ResultSet resultSet = daoProduto.listarPorNome(pProduto);
             
             defaultTableModel.setRowCount(0);
+            
             while (resultSet.next()){
                 String nome = resultSet.getString(4);
                 String preco = resultSet.getString(6);
@@ -312,6 +316,7 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
             if (Formularios.telaLogin == null)
                 Formularios.telaLogin = new TelaLogin();
 
+            Formularios.telaLogin.setModal(true);
             Formularios.telaLogin.setVisible(true);
         }else{
             int escolha = 
@@ -357,10 +362,25 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
                 DadosTemporarios.categoriaProdutoVenda = categoria;
                 DadosTemporarios.marcaProdutoVenda = marca;
                 
-                if (Formularios.telaVenda == null)
+                if (Formularios.telaVenda == null){
                     Formularios.telaVenda = new TelaVenda();
+                    Formularios.telaVenda.setVisible(true);
+                }else{
+                    int escolha = 
+                        JOptionPane.showConfirmDialog(
+                            null, 
+                            "Existe uma compra em andamento, deseja cancelá-la?");
+                    
+                    if(escolha == JOptionPane.YES_OPTION){
+                        Formularios.telaVenda.dispose();
+                        Formularios.telaVenda = null;
 
-                Formularios.telaVenda.setVisible(true);
+                        Formularios.telaVenda = new TelaVenda();
+                        Formularios.telaVenda.setVisible(true);
+                    }else{
+                        Formularios.telaVenda.setVisible(true);
+                    }
+                }
             }
         }catch(Exception e){
             System.out.println(e.getMessage());

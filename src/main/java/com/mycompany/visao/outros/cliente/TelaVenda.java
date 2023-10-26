@@ -356,7 +356,7 @@ public class TelaVenda extends javax.swing.JFrame {
             
             daoPedido.inserir(id, idCliente, idProduto, dataPedido, quantidade);
             
-            JOptionPane.showMessageDialog(null, "Pedido realizado com sucesso!");
+            JOptionPane.showMessageDialog(null, "Obrigado, " + DadosTemporarios.usuarioLogado + ", pela sua compra, seu produto chegará em breve!");
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Houve um problema ao tentar salvar o pedido!");
         }
