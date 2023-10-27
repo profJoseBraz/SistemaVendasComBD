@@ -130,7 +130,8 @@ public class DaoPessoa extends BancoDeDadosMySql{
                 "   P.TELEFONE AS TELEFONE,         " +
                 "   P.EMAIL AS EMAIL,               " +
                 "   EC.NOME AS ESTADO_CIVIL,        " + 
-                "   P.ID_ENDERECO AS ID_ENDERECO    " +
+                "   P.ID_ENDERECO AS ID_ENDERECO ,  " +
+                "   E.ID AS ID_ENDERECO             " +
                 " FROM                              " +
                 "   PESSOA P                        " +
                 " JOIN ENDERECO E ON                " +
@@ -176,7 +177,7 @@ public class DaoPessoa extends BancoDeDadosMySql{
                 "   C.ID = E.ID_CIDADE              " +
                 " JOIN ESTADO_CIVIL EC ON           " +
                 "   EC.ID = P.ID_ESTADO_CIVIL       " +
-                " WHERE E.RUA LIKE ?                " ;
+                " WHERE E.NOME_RUA LIKE ?           " ;
             
             setStatement(getConexao().prepareStatement(sql));
             

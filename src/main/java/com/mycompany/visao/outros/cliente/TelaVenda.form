@@ -27,20 +27,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
+          <Component id="jPanel1" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -49,6 +41,11 @@
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="57" green="57" red="ff" type="rgb"/>
+        </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+            <BevelBorder/>
+          </Border>
         </Property>
       </Properties>
 
@@ -63,10 +60,10 @@
                       <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="labelTotalCompra" alignment="0" pref="300" max="32767" attributes="0"/>
-                              <Component id="jLabel9" alignment="0" pref="300" max="32767" attributes="0"/>
+                              <Component id="labelTotalCompra" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLabel9" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="133" max="32767" attributes="0"/>
+                          <EmptySpace pref="130" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="labelQuantidadeCompra" alignment="0" max="32767" attributes="0"/>
                               <Component id="jLabel11" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
@@ -77,16 +74,16 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="jLabel3" max="32767" attributes="0"/>
+                                  <Component id="jLabel3" pref="194" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
                               <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
                               <Component id="jLabel7" alignment="0" max="32767" attributes="0"/>
-                              <Component id="labelProduto" alignment="0" pref="300" max="32767" attributes="0"/>
-                              <Component id="labelCategoriaProduto" alignment="0" pref="300" max="32767" attributes="0"/>
-                              <Component id="labelMarcaProduto" alignment="0" pref="300" max="32767" attributes="0"/>
-                              <Component id="labelPreco" alignment="0" pref="300" max="32767" attributes="0"/>
+                              <Component id="labelProduto" alignment="0" max="32767" attributes="0"/>
+                              <Component id="labelCategoriaProduto" alignment="0" max="32767" attributes="0"/>
+                              <Component id="labelMarcaProduto" alignment="0" max="32767" attributes="0"/>
+                              <Component id="labelPreco" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -95,7 +92,7 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="labelQuantidadeAtual" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton3" min="-2" pref="130" max="-2" attributes="0"/>
+                                  <Component id="jButton5" min="-2" pref="130" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="tfIdPedido" min="-2" pref="100" max="-2" attributes="0"/>
@@ -141,16 +138,16 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jButton3" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
                               <Component id="jButton4" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
                               <Component id="labelQuantidadeAtual" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButton5" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" pref="97" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" pref="121" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -184,9 +181,10 @@
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI Symbol" size="24" style="1"/>
+              <Font name="Sitka Small" size="24" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Comprar"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
@@ -195,7 +193,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI Symbol" size="24" style="1"/>
+              <Font name="Sitka Small" size="24" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Marca"/>
           </Properties>
@@ -203,7 +201,7 @@
         <Component class="javax.swing.JLabel" name="labelProduto">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="0"/>
+              <Font name="Sitka Small" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="nomeProduto"/>
           </Properties>
@@ -211,7 +209,7 @@
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI Symbol" size="24" style="1"/>
+              <Font name="Sitka Small" size="24" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Produto"/>
           </Properties>
@@ -219,7 +217,7 @@
         <Component class="javax.swing.JLabel" name="labelMarcaProduto">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="0"/>
+              <Font name="Sitka Small" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="marcaProduto"/>
           </Properties>
@@ -227,7 +225,7 @@
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI Symbol" size="24" style="1"/>
+              <Font name="Sitka Small" size="24" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Categoria"/>
           </Properties>
@@ -235,7 +233,7 @@
         <Component class="javax.swing.JLabel" name="labelCategoriaProduto">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="0"/>
+              <Font name="Sitka Small" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="categoriaProduto"/>
           </Properties>
@@ -245,7 +243,7 @@
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI Symbol" size="24" style="1"/>
+              <Font name="Sitka Small" size="24" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Pre&#xe7;o"/>
           </Properties>
@@ -253,7 +251,7 @@
         <Component class="javax.swing.JLabel" name="labelPreco">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="0"/>
+              <Font name="Sitka Small" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="pre&#xe7;oProduto"/>
           </Properties>
@@ -261,7 +259,7 @@
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI Symbol" size="36" style="1"/>
+              <Font name="Sitka Small" size="36" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Total da compra"/>
           </Properties>
@@ -269,7 +267,7 @@
         <Component class="javax.swing.JLabel" name="labelTotalCompra">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="24" style="1"/>
+              <Font name="Sitka Small" size="24" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="totalCompra"/>
           </Properties>
@@ -277,7 +275,7 @@
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI Symbol" size="36" style="1"/>
+              <Font name="Sitka Small" size="36" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Quantidade"/>
           </Properties>
@@ -285,7 +283,7 @@
         <Component class="javax.swing.JLabel" name="labelQuantidadeCompra">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="24" style="1"/>
+              <Font name="Sitka Small" size="24" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="quantidadeCompra"/>
           </Properties>
@@ -295,7 +293,7 @@
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI Symbol" size="24" style="1"/>
+              <Font name="Sitka Small" size="24" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o"/>
           </Properties>
@@ -307,31 +305,24 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="jTextArea1">
+            <Component class="javax.swing.JTextArea" name="taDescricao">
               <Properties>
                 <Property name="columns" type="int" value="20"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Sitka Small" size="14" style="0"/>
+                </Property>
                 <Property name="rows" type="int" value="5"/>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="jButton3">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI Symbol" size="24" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="+"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JButton" name="jButton4">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI Symbol" size="24" style="1"/>
+              <Font name="Sitka Small" size="24" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="-"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
@@ -340,7 +331,7 @@
         <Component class="javax.swing.JLabel" name="labelQuantidadeAtual">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI Symbol" size="24" style="1"/>
+              <Font name="Sitka Small" size="24" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="1"/>
           </Properties>
@@ -354,6 +345,18 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="idCliente"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton5">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Sitka Small" size="24" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="+"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

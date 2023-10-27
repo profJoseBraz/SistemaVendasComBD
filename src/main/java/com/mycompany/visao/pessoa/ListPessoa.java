@@ -524,12 +524,12 @@ public class ListPessoa extends javax.swing.JFrame {
                 modPessoa.setEmail(String.valueOf(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 9)));
                 
                 //
-                DaoEndereco daoEndereco = new DaoEndereco();
-                ResultSet resultSet = daoEndereco.listarPorId(Integer.parseInt(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 0).toString()));
+                DaoPessoa daoPessoa = new DaoPessoa();
+                ResultSet resultSet = daoPessoa.listarPorId(Integer.parseInt(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 0).toString()));
 
                 int idEndereco = -1;
                 while(resultSet.next())
-                    idEndereco = resultSet.getInt("ID");
+                    idEndereco = resultSet.getInt("ID_ENDERECO");
 
                 modPessoa.setIdEndereco(idEndereco);
                 //

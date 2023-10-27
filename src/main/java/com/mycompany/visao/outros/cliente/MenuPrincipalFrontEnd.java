@@ -129,11 +129,13 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel3.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jPanel2.setBackground(new java.awt.Color(255, 87, 87));
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        labelCadastrar.setFont(new java.awt.Font("Segoe UI Symbol", 1, 12)); // NOI18N
+        labelCadastrar.setFont(new java.awt.Font("Sitka Small", 1, 12)); // NOI18N
         labelCadastrar.setText("Cadastrar   |");
         labelCadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -141,7 +143,7 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
             }
         });
 
-        labelEntrar.setFont(new java.awt.Font("Segoe UI Symbol", 1, 12)); // NOI18N
+        labelEntrar.setFont(new java.awt.Font("Sitka Small", 1, 12)); // NOI18N
         labelEntrar.setText("Entrar");
         labelEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -149,7 +151,7 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
             }
         });
 
-        labelUsuarioLogado.setFont(new java.awt.Font("Segoe UI Symbol", 1, 12)); // NOI18N
+        labelUsuarioLogado.setFont(new java.awt.Font("Sitka Small", 1, 12)); // NOI18N
         labelUsuarioLogado.setText("Usuário logado");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -158,9 +160,9 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelUsuarioLogado, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
-                .addGap(186, 186, 186)
-                .addComponent(labelCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelUsuarioLogado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(173, 173, 173)
+                .addComponent(labelCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -177,11 +179,13 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
         );
 
         jPanel1.setBackground(new java.awt.Color(255, 87, 87));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        tfPesquisaProduto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tfPesquisaProduto.setFont(new java.awt.Font("Sitka Small", 1, 18)); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Segoe UI Symbol", 1, 18)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Sitka Small", 1, 18)); // NOI18N
         jButton1.setText("Buscar");
+        jButton1.setBorderPainted(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -210,8 +214,9 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 87, 87));
+        jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        tableProduto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tableProduto.setFont(new java.awt.Font("Sitka Small", 0, 14)); // NOI18N
         tableProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -245,7 +250,7 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -284,17 +289,11 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();

@@ -31,6 +31,8 @@ public class TelaVenda extends javax.swing.JFrame {
         
         labelQuantidadeCompra.setText("1");
         
+        taDescricao.setEnabled(false);
+        
         calculaTotalCompra(Double.parseDouble(labelPreco.getText()), Integer.parseInt(labelQuantidadeCompra.getText()));
     }
 
@@ -54,6 +56,7 @@ public class TelaVenda extends javax.swing.JFrame {
             labelPreco.setText(String.valueOf(preco));
             labelCategoriaProduto.setText(categoria);
             labelMarcaProduto.setText(marca);
+            taDescricao.setText(descricao);
             
             DadosTemporarios.tempObject = null;
             DadosTemporarios.categoriaProdutoVenda = null;
@@ -118,12 +121,12 @@ public class TelaVenda extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton3 = new javax.swing.JButton();
+        taDescricao = new javax.swing.JTextArea();
         jButton4 = new javax.swing.JButton();
         labelQuantidadeAtual = new javax.swing.JLabel();
         tfIdProduto = new javax.swing.JTextField();
         tfIdCliente = new javax.swing.JTextField();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Compras");
@@ -134,82 +137,87 @@ public class TelaVenda extends javax.swing.JFrame {
         });
 
         jPanel1.setBackground(new java.awt.Color(255, 87, 87));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         tfIdPedido.setText("idPedido");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI Symbol", 1, 24)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Sitka Small", 1, 24)); // NOI18N
         jButton1.setText("Comprar");
+        jButton1.setBorderPainted(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Symbol", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Sitka Small", 1, 24)); // NOI18N
         jLabel1.setText("Marca");
 
-        labelProduto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelProduto.setFont(new java.awt.Font("Sitka Small", 0, 18)); // NOI18N
         labelProduto.setText("nomeProduto");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Symbol", 1, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Sitka Small", 1, 24)); // NOI18N
         jLabel3.setText("Produto");
 
-        labelMarcaProduto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelMarcaProduto.setFont(new java.awt.Font("Sitka Small", 0, 18)); // NOI18N
         labelMarcaProduto.setText("marcaProduto");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI Symbol", 1, 24)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Sitka Small", 1, 24)); // NOI18N
         jLabel5.setText("Categoria");
 
-        labelCategoriaProduto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelCategoriaProduto.setFont(new java.awt.Font("Sitka Small", 0, 18)); // NOI18N
         labelCategoriaProduto.setText("categoriaProduto");
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI Symbol", 1, 24)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Sitka Small", 1, 24)); // NOI18N
         jLabel7.setText("Preço");
 
-        labelPreco.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelPreco.setFont(new java.awt.Font("Sitka Small", 0, 18)); // NOI18N
         labelPreco.setText("preçoProduto");
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI Symbol", 1, 36)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Sitka Small", 1, 36)); // NOI18N
         jLabel9.setText("Total da compra");
 
-        labelTotalCompra.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        labelTotalCompra.setFont(new java.awt.Font("Sitka Small", 1, 24)); // NOI18N
         labelTotalCompra.setText("totalCompra");
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI Symbol", 1, 36)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Sitka Small", 1, 36)); // NOI18N
         jLabel11.setText("Quantidade");
 
-        labelQuantidadeCompra.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        labelQuantidadeCompra.setFont(new java.awt.Font("Sitka Small", 1, 24)); // NOI18N
         labelQuantidadeCompra.setText("quantidadeCompra");
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI Symbol", 1, 24)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Sitka Small", 1, 24)); // NOI18N
         jLabel8.setText("Descrição");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        taDescricao.setColumns(20);
+        taDescricao.setFont(new java.awt.Font("Sitka Small", 0, 14)); // NOI18N
+        taDescricao.setRows(5);
+        jScrollPane1.setViewportView(taDescricao);
 
-        jButton3.setFont(new java.awt.Font("Segoe UI Symbol", 1, 24)); // NOI18N
-        jButton3.setText("+");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setFont(new java.awt.Font("Segoe UI Symbol", 1, 24)); // NOI18N
+        jButton4.setFont(new java.awt.Font("Sitka Small", 1, 24)); // NOI18N
         jButton4.setText("-");
+        jButton4.setBorderPainted(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
 
-        labelQuantidadeAtual.setFont(new java.awt.Font("Segoe UI Symbol", 1, 24)); // NOI18N
+        labelQuantidadeAtual.setFont(new java.awt.Font("Sitka Small", 1, 24)); // NOI18N
         labelQuantidadeAtual.setText("1");
 
         tfIdProduto.setText("idProduto");
 
         tfIdCliente.setText("idCliente");
+
+        jButton5.setFont(new java.awt.Font("Sitka Small", 1, 24)); // NOI18N
+        jButton5.setText("+");
+        jButton5.setBorderPainted(false);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -223,9 +231,9 @@ public class TelaVenda extends javax.swing.JFrame {
                     .addComponent(jSeparator1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(labelTotalCompra, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
+                            .addComponent(labelTotalCompra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(labelQuantidadeCompra, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -234,15 +242,15 @@ public class TelaVenda extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
                                 .addGap(106, 106, 106))
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(labelProduto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                            .addComponent(labelCategoriaProduto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                            .addComponent(labelMarcaProduto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                            .addComponent(labelPreco, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
+                            .addComponent(labelProduto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelCategoriaProduto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelMarcaProduto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelPreco, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -250,7 +258,7 @@ public class TelaVenda extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(labelQuantidadeAtual)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(tfIdPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -287,13 +295,13 @@ public class TelaVenda extends javax.swing.JFrame {
                             .addComponent(tfIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelQuantidadeAtual))))
+                            .addComponent(labelQuantidadeAtual)
+                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(21, 21, 21)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -317,26 +325,15 @@ public class TelaVenda extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        adicionaUnidade();
-        calculaTotalCompra(Double.parseDouble(labelPreco.getText()), Integer.parseInt(labelQuantidadeCompra.getText()));
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         diminuirUnidade();
@@ -367,6 +364,11 @@ public class TelaVenda extends javax.swing.JFrame {
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         Formularios.telaVenda = null;
     }//GEN-LAST:event_formWindowClosed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        adicionaUnidade();
+        calculaTotalCompra(Double.parseDouble(labelPreco.getText()), Integer.parseInt(labelQuantidadeCompra.getText()));
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -406,8 +408,8 @@ public class TelaVenda extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel3;
@@ -419,7 +421,6 @@ public class TelaVenda extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel labelCategoriaProduto;
     private javax.swing.JLabel labelMarcaProduto;
     private javax.swing.JLabel labelPreco;
@@ -427,6 +428,7 @@ public class TelaVenda extends javax.swing.JFrame {
     private javax.swing.JLabel labelQuantidadeAtual;
     private javax.swing.JLabel labelQuantidadeCompra;
     private javax.swing.JLabel labelTotalCompra;
+    private javax.swing.JTextArea taDescricao;
     private javax.swing.JTextField tfIdCliente;
     private javax.swing.JTextField tfIdPedido;
     private javax.swing.JTextField tfIdProduto;
