@@ -133,6 +133,8 @@ public class TelaVenda extends javax.swing.JFrame {
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(255, 87, 87));
+
         tfIdPedido.setText("idPedido");
 
         jButton1.setFont(new java.awt.Font("Segoe UI Symbol", 1, 24)); // NOI18N
