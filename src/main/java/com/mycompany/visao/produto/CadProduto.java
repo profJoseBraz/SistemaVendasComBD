@@ -52,7 +52,8 @@ public class CadProduto extends javax.swing.JFrame {
         
         tfId.setEnabled(false);
         
-//        tfIdPais.setVisible(false);;
+        tfIdCategoria.setVisible(false);
+        tfIdMarca.setVisible(false);
     }
 
     private Boolean existeDadosTemporarios(){        

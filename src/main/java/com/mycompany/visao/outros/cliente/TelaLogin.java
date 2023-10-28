@@ -145,6 +145,9 @@ public class TelaLogin extends javax.swing.JDialog {
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         try{
+            if(tfUsuario.getText().equals("") || tfUsuario.getText().equals(""))
+                throw new Exception();
+            
             DaoPessoa daoPessoa = new DaoPessoa();
             
             ResultSet resultset = daoPessoa.recuperaSenha(tfUsuario.getText());
@@ -152,7 +155,7 @@ public class TelaLogin extends javax.swing.JDialog {
             resultset.next();
             int id = resultset.getInt("ID");
             String senha = resultset.getString("SENHA");
-            
+                
             if(senha.equals(String.valueOf(pfSenha.getPassword()))){
                 DadosTemporarios.usuarioLogado = tfUsuario.getText();
                 
