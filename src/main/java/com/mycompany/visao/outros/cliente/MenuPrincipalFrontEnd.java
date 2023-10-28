@@ -103,6 +103,7 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
             labelUsuarioLogado.setText(Constantes.PREFIXO_USUARIO_LOGADO + DadosTemporarios.usuarioLogado);
             
             labelEntrar.setText(Constantes.LABEL_SAIR);
+            labelCadastrar.setVisible(false);
         }
     }
     
@@ -137,6 +138,7 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
 
         labelCadastrar.setFont(new java.awt.Font("Sitka Small", 1, 12)); // NOI18N
         labelCadastrar.setText("Cadastrar   |");
+        labelCadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         labelCadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 labelCadastrarMouseClicked(evt);
@@ -145,6 +147,7 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
 
         labelEntrar.setFont(new java.awt.Font("Sitka Small", 1, 12)); // NOI18N
         labelEntrar.setText("Entrar");
+        labelEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         labelEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 labelEntrarMouseClicked(evt);
@@ -186,6 +189,7 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Sitka Small", 1, 18)); // NOI18N
         jButton1.setText("Buscar");
         jButton1.setBorderPainted(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -233,6 +237,7 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tableProduto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tableProduto.getTableHeader().setReorderingAllowed(false);
         tableProduto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -328,6 +333,7 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
                 DadosTemporarios.usuarioLogado = null;
                 labelEntrar.setText(Constantes.LABEL_ENTRAR);
                 labelUsuarioLogado.setText("");
+                labelCadastrar.setVisible(true);
                 
                 ((DefaultTableModel) tableProduto.getModel()).setNumRows(0);
             }

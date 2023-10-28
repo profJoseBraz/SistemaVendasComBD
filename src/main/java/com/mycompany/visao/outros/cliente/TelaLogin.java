@@ -75,6 +75,7 @@ public class TelaLogin extends javax.swing.JDialog {
         btnEntrar.setFont(new java.awt.Font("Sitka Small", 1, 18)); // NOI18N
         btnEntrar.setText("Entrar");
         btnEntrar.setBorderPainted(false);
+        btnEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEntrarActionPerformed(evt);
@@ -83,6 +84,7 @@ public class TelaLogin extends javax.swing.JDialog {
 
         jLabel3.setFont(new java.awt.Font("Sitka Small", 1, 10)); // NOI18N
         jLabel3.setText("Esqueci minha senha");
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         pfSenha.setFont(new java.awt.Font("Sitka Small", 0, 14)); // NOI18N
 
