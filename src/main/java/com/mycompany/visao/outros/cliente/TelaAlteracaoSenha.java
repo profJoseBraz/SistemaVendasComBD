@@ -4,19 +4,24 @@
  */
 package com.mycompany.visao.outros.cliente;
 
+import com.mycompany.dao.DaoPessoa;
 import com.mycompany.ferramentas.DadosTemporarios;
+import com.mycompany.ferramentas.Formularios;
+import java.sql.ResultSet;
 
 /**
  *
  * @author 10156
  */
-public class TelaAlteracaoSenha extends javax.swing.JFrame {
+public class TelaAlteracaoSenha extends javax.swing.JDialog {
 
     /**
      * Creates new form TelaAlteracaoSenha
      */
     public TelaAlteracaoSenha() {
         initComponents();
+        
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -38,10 +43,14 @@ public class TelaAlteracaoSenha extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         pfConfirmacaoSenha = new javax.swing.JPasswordField();
         btnConfirmar = new javax.swing.JButton();
-        tfIdCliente = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 87, 87));
 
@@ -78,8 +87,6 @@ public class TelaAlteracaoSenha extends javax.swing.JFrame {
             }
         });
 
-        tfIdCliente.setText("idCliente");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -101,13 +108,8 @@ public class TelaAlteracaoSenha extends javax.swing.JFrame {
                                     .addComponent(jLabel4))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(136, 136, 136)
-                                .addComponent(btnConfirmar))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(tfIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(136, 136, 136)
+                        .addComponent(btnConfirmar)
                         .addGap(0, 134, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -130,9 +132,7 @@ public class TelaAlteracaoSenha extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pfConfirmacaoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addComponent(btnConfirmar)
                 .addContainerGap())
         );
@@ -156,8 +156,21 @@ public class TelaAlteracaoSenha extends javax.swing.JFrame {
     }//GEN-LAST:event_tfEmailActionPerformed
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
-        // TODO add your handling code here:
+        try{
+            DaoPessoa daoPessoa = new DaoPessoa();
+            
+            ResultSet resultSet = daoPessoa.listarPorUsuario(tfUsuario.getText(), false);
+        
+            resultSet.next();
+            
+        }catch(Exception e){
+            
+        }
     }//GEN-LAST:event_btnConfirmarActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+            Formularios.telaAlteracaoSenha = null;
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
@@ -204,7 +217,6 @@ public class TelaAlteracaoSenha extends javax.swing.JFrame {
     private javax.swing.JPasswordField pfConfirmacaoSenha;
     private javax.swing.JPasswordField pfNovaSenha;
     private javax.swing.JTextField tfEmail;
-    private javax.swing.JTextField tfIdCliente;
     private javax.swing.JTextField tfUsuario;
     // End of variables declaration//GEN-END:variables
 }

@@ -165,6 +165,7 @@ com\mycompany\visao\pais\CadPais.class
 com\mycompany\visao\pessoa\ListPessoa.class
 com\mycompany\visao\categoria\ListCategoria$3.class
 com\mycompany\dao\DaoEstadoCivil.class
+com\mycompany\visao\outros\cliente\TelaAlteracaoSenha$4.class
 com\mycompany\visao\outros\cliente\TelaVenda$2.class
 com\mycompany\visao\outros\cliente\MenuPrincipalFrontEnd$1.class
 com\mycompany\visao\cidade\ListCidade$4.class
@@ -173,6 +174,7 @@ com\mycompany\visao\estado\ListEstado$3.class
 com\mycompany\visao\categoria\CadCategoria$3.class
 com\mycompany\visao\outros\corporativo\MenuPrincipal$15.class
 com\mycompany\dao\DaoPessoa.class
+com\mycompany\visao\outros\cliente\TelaLogin$5.class
 com\mycompany\visao\pessoa\CadPessoa$6.class
 com\mycompany\visao\estado\ListEstado.class
 com\mycompany\visao\pais\ListPais$3.class

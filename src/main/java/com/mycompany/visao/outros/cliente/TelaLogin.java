@@ -9,6 +9,7 @@ import com.mycompany.dao.DaoPessoa;
 import com.mycompany.ferramentas.Constantes;
 import com.mycompany.ferramentas.DadosTemporarios;
 import com.mycompany.ferramentas.Formularios;
+import com.mycompany.visao.pessoa.CadPessoa;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
@@ -85,6 +86,11 @@ public class TelaLogin extends javax.swing.JDialog {
         jLabel3.setFont(new java.awt.Font("Sitka Small", 1, 10)); // NOI18N
         jLabel3.setText("Esqueci minha senha");
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
 
         pfSenha.setFont(new java.awt.Font("Sitka Small", 0, 14)); // NOI18N
 
@@ -184,6 +190,14 @@ public class TelaLogin extends javax.swing.JDialog {
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         Formularios.telaLogin = null;
     }//GEN-LAST:event_formWindowClosed
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        if (Formularios.telaAlteracaoSenha == null)
+            Formularios.telaAlteracaoSenha = new TelaAlteracaoSenha();
+
+        Formularios.telaAlteracaoSenha.setModal(true);
+        Formularios.telaAlteracaoSenha.setVisible(true);
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
      * @param args the command line arguments

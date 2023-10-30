@@ -487,6 +487,46 @@ public class DaoPessoa extends BancoDeDadosMySql{
         return getResultado();
     }
     
+    public ResultSet listarPorUsuario(String usuario, boolean buscaParcial){
+        try{
+            sql = 
+                " SELECT                            " +
+                "   P.ID AS ID,                     " +
+                "   C.NOME AS CIDADE,               " +
+                "   E.NOME_RUA AS RUA,              " +
+                "   E.CEP AS CEP,                   " +
+                "   E.NUMERO_RESIDENCIA AS NUM_RES, " +
+                "   P.NOME AS NOME,                 " +
+                "   P.SOBRENOME AS SOBRENOME,       " +
+                "   P.GENERO AS GENERO,             " +
+                "   P.TELEFONE AS TELEFONE,         " +
+                "   P.EMAIL AS EMAIL,               " +
+                "   EC.NOME AS ESTADO_CIVIL         " +
+                " FROM                              " +
+                "   PESSOA P                        " +
+                " JOIN ENDERECO E ON                " +
+                "   E.ID = P.ID_ENDERECO            " +
+                " JOIN CIDADE C ON                  " +
+                "   C.ID = E.ID_CIDADE              " +
+                " JOIN ESTADO_CIVIL EC ON           " +
+                "   EC.ID = P.ID_ESTADO_CIVIL       " +
+                " WHERE P.USUARIO LIKE ?            " ;
+            
+            setStatement(getConexao().prepareStatement(sql));
+            
+            if(buscaParcial)
+                getStatement().setString(1, usuario + "%");
+            else
+                getStatement().setString(1, usuario);
+            
+            setResultado(getStatement().executeQuery());
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        
+        return getResultado();
+    }
+    
     public ResultSet recuperaSenha(String usuario){
         try{
             sql = 

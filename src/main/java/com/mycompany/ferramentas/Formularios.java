@@ -61,4 +61,7 @@ public class Formularios {
     
     //Tela de venda
     public static JFrame telaVenda;
+    
+    //Tela recuperação de senha
+    public static JDialog telaAlteracaoSenha;
 }
