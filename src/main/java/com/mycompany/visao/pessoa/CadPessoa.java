@@ -420,7 +420,7 @@ public class CadPessoa extends javax.swing.JFrame {
 
         tfTelefone.setToolTipText("Telefone");
 
-        jLabel8.setText("E-mail *");
+        jLabel8.setText("E-mail");
 
         tfEmail.setToolTipText("E-mail");
 
@@ -476,11 +476,13 @@ public class CadPessoa extends javax.swing.JFrame {
 
         tfIdCliente.setText("idCliente");
 
-        jLabel14.setText("Usuário");
+        jLabel14.setText("Usuário *");
 
-        jLabel15.setText("Senha");
+        tfUsuario.setToolTipText("Usuário");
 
-        jLabel16.setText("Confirmação de senha");
+        jLabel15.setText("Senha *");
+
+        jLabel16.setText("Confirmação de senha *");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -675,7 +677,7 @@ public class CadPessoa extends javax.swing.JFrame {
             DaoCliente daoCliente = new DaoCliente();
             DaoEndereco daoEndereco = new DaoEndereco();
 
-            if(camposObrigatoriosPreenchidos(new JTextField[]{tfRua, tfCep, tfNumero, tfNome, tfSobrenome, tfTelefone, tfEmail})){
+            if(camposObrigatoriosPreenchidos(new JTextField[]{tfRua, tfCep, tfNumero, tfNome, tfSobrenome, tfTelefone, tfUsuario})){
                 if (btnAcao.getText() == Constantes.BTN_SALVAR_TEXT){
                     inserirEndereco();
                     inserir();

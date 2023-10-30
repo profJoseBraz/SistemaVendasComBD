@@ -1,4 +1,5 @@
 com\mycompany\visao\pedido\ListPedido$2.class
+com\mycompany\visao\outros\cliente\TelaAlteracaoSenha$1.class
 com\mycompany\visao\estado\CadEstado$4.class
 com\mycompany\visao\outros\cliente\TelaLogin$3.class
 com\mycompany\visao\cidade\CadCidade$8.class
@@ -123,6 +124,7 @@ com\mycompany\dao\DaoEstado.class
 com\mycompany\modelo\ModCidade.class
 com\mycompany\modelo\ModEstadoCivil.class
 com\mycompany\visao\endereco\CadEndereco$4.class
+com\mycompany\visao\outros\cliente\TelaAlteracaoSenha$2.class
 com\mycompany\visao\outros\cliente\TelaLogin.class
 com\mycompany\visao\estado_civil\CadEstadoCivil$1.class
 com\mycompany\visao\marca\ListMarca.class
@@ -132,7 +134,9 @@ com\mycompany\visao\categoria\CadCategoria.class
 com\mycompany\visao\endereco\CadEndereco$1.class
 com\mycompany\visao\outros\corporativo\MenuPrincipal.class
 com\mycompany\visao\pais\ListPais.class
+com\mycompany\visao\outros\cliente\TelaAlteracaoSenha.class
 com\mycompany\visao\pessoa\CadPessoa.class
+com\mycompany\visao\outros\cliente\TelaAlteracaoSenha$3.class
 com\mycompany\visao\pessoa\ListPessoa$1.class
 com\mycompany\ferramentas\Formularios.class
 com\mycompany\visao\pessoa\ListPessoa$5.class
