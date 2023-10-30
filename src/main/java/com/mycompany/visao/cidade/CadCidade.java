@@ -49,7 +49,7 @@ public class CadCidade extends javax.swing.JFrame {
         
         tfId.setEnabled(false);
         
-        //tfIdEstado.setVisible(false);
+        tfIdEstado.setVisible(false);
     }
 
     private Boolean existeDadosTemporarios(){        

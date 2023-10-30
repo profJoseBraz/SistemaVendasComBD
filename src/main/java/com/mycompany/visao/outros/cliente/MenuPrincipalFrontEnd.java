@@ -9,18 +9,10 @@ import com.mycompany.ferramentas.BancoDeDadosMySql;
 import com.mycompany.ferramentas.Constantes;
 import com.mycompany.ferramentas.DadosTemporarios;
 import com.mycompany.ferramentas.Formularios;
-import com.mycompany.modelo.ModPais;
 import com.mycompany.modelo.ModProduto;
-import com.mycompany.visao.cidade.CadCidade;
-import com.mycompany.visao.pais.CadPais;
 import com.mycompany.visao.pessoa.CadPessoa;
-import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.sql.ResultSet;
-import java.text.NumberFormat;
-import java.util.Locale;
-import javax.swing.DefaultButtonModel;
 import javax.swing.JOptionPane;
-import javax.swing.JRootPane;
 import javax.swing.table.DefaultTableModel;
 
 /**

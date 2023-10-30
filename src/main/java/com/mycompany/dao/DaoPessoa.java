@@ -64,6 +64,24 @@ public class DaoPessoa extends BancoDeDadosMySql{
         }
     }
     
+    public Boolean alterarSenha(int id, String novaSenha){
+        try{
+            sql = "UPDATE PESSOA SET SENHA = ? WHERE ID = ?";
+            
+            setStatement(getConexao().prepareStatement(sql));
+            
+            getStatement().setInt(2, id);
+            getStatement().setString(1, novaSenha);
+            
+            getStatement().executeUpdate();
+            
+            return true;
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
     public Boolean excluir(int id){
         try{
             sql = "DELETE FROM PESSOA WHERE ID = ?";
@@ -501,7 +519,8 @@ public class DaoPessoa extends BancoDeDadosMySql{
                 "   P.GENERO AS GENERO,             " +
                 "   P.TELEFONE AS TELEFONE,         " +
                 "   P.EMAIL AS EMAIL,               " +
-                "   EC.NOME AS ESTADO_CIVIL         " +
+                "   EC.NOME AS ESTADO_CIVIL,        " +
+                "   P.USUARIO AS USUARIO            " +
                 " FROM                              " +
                 "   PESSOA P                        " +
                 " JOIN ENDERECO E ON                " +

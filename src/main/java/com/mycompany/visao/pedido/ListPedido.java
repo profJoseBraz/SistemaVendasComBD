@@ -351,6 +351,7 @@ public class ListPedido extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Consulta de pedidos");
 
         jcbTipoFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TODOS", "NOME CLIENTE", "SOBRENOME CIENTE", "PRODUTO", "DATA PEDIDO MAIOR QUE", "DATA PEDIDO MENOR QUE", "DATA PEDIDO IGUAL A", "TOTAL MAIOR QUE", "TOTAL MENOR QUE", "TOTAL IGUAL A" }));
 
@@ -364,7 +365,15 @@ public class ListPedido extends javax.swing.JFrame {
             new String [] {
                 "ID", "NOME DO CLIENTE", "PRODUTO", "DATA DO PEDIDO", "QUANTIDADE", "TOTAL DO PEDIDO"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tablePedido);
 
         btnBuscar.setText("Buscar");

@@ -153,7 +153,7 @@ public class TelaLogin extends javax.swing.JDialog {
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         try{
-            if(tfUsuario.getText().equals("") || tfUsuario.getText().equals(""))
+            if(tfUsuario.getText().equals("") || String.valueOf(pfSenha.getPassword()).equals(""))
                 throw new Exception();
             
             DaoPessoa daoPessoa = new DaoPessoa();

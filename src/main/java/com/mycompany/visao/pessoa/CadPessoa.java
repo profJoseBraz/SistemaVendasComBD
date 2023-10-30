@@ -672,6 +672,7 @@ public class CadPessoa extends javax.swing.JFrame {
         String senha = String.valueOf(pfSenha.getPassword());
         String confirmacaoSenha = String.valueOf(pfConfirmacaoSenha.getPassword());
         
+        
         if(senha.equals(confirmacaoSenha)){
             DaoPessoa daoPessoa = new DaoPessoa();
             DaoCliente daoCliente = new DaoCliente();

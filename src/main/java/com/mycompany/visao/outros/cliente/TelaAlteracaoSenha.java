@@ -5,9 +5,12 @@
 package com.mycompany.visao.outros.cliente;
 
 import com.mycompany.dao.DaoPessoa;
+import com.mycompany.ferramentas.Constantes;
 import com.mycompany.ferramentas.DadosTemporarios;
 import com.mycompany.ferramentas.Formularios;
 import java.sql.ResultSet;
+import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -45,6 +48,7 @@ public class TelaAlteracaoSenha extends javax.swing.JDialog {
         btnConfirmar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Recuperação de senha");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
@@ -162,12 +166,45 @@ public class TelaAlteracaoSenha extends javax.swing.JDialog {
             ResultSet resultSet = daoPessoa.listarPorUsuario(tfUsuario.getText(), false);
         
             resultSet.next();
+            int id = resultSet.getInt("ID");
+            String usuario = resultSet.getString("USUARIO");
+            String email = resultSet.getString("EMAIL");
             
+            String senha = String.valueOf(pfNovaSenha.getPassword());
+            String confirmacaoSenha = String.valueOf(pfConfirmacaoSenha.getPassword());
+            
+            if(tfUsuario.getText().equals(usuario) && tfEmail.getText().equals(email)){
+                if(!campoSenhaVazio(senha)){
+                    if(senha.equals(confirmacaoSenha)){
+                        if(daoPessoa.alterarSenha(id, String.valueOf(pfNovaSenha.getPassword()))){
+                            JOptionPane.showMessageDialog(null, "Senha alterada com sucesso!");
+                            dispose();
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(null, Constantes.CONFIRMACAO_SENHA_DIFERENTE);
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Informe uma senha!");
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Usuário e/ou e-mail não encontrado(s)! Por favor, verifique os dados digitados!");
+            }
         }catch(Exception e){
             
         }
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
+    private boolean campoSenhaVazio(String senha){
+        boolean isVazio = true;
+        
+        for(int i = 0; i < senha.length(); i++){
+            if(senha.charAt(i) != ' ')
+                isVazio = false;
+        }
+        
+        return isVazio;
+    }
+    
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
             Formularios.telaAlteracaoSenha = null;
     }//GEN-LAST:event_formWindowClosed

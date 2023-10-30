@@ -243,6 +243,7 @@ public class CadProduto extends javax.swing.JFrame {
         tfIdMarca = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de produto");
 
         jLabel1.setText("ID");
 
