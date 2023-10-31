@@ -54,7 +54,7 @@ public class DaoCliente extends BancoDeDadosMySql{
             sql = 
                 " SELECT                            " +
                 "   ID AS ID,                       " +
-                "   ID_PESSOA AS CIDADE             " +
+                "   ID_PESSOA AS ID_PESSOA          " +
                 " FROM                              " +
                 "   CLIENTE                         " +
                 " WHERE ID_PESSOA = ?               " ;

@@ -167,8 +167,6 @@ public class TelaLogin extends javax.swing.JDialog {
             if(senha.equals(String.valueOf(pfSenha.getPassword()))){
                 DadosTemporarios.usuarioLogado = tfUsuario.getText();
                 
-                JOptionPane.showMessageDialog(null, "Bem-vindo(a), " + tfUsuario.getText());
-                
                 ResultSet resultSetCliente = new DaoCliente().listarPorIdPessoa(id);
                 resultSetCliente.next();
                 int idCliente = resultSetCliente.getInt("ID");
@@ -177,6 +175,8 @@ public class TelaLogin extends javax.swing.JDialog {
                 DadosTemporarios.usuarioLogado = tfUsuario.getText();
                 
                 ((MenuPrincipalFrontEnd) Formularios.menuPrincipalFrontEnd).verificaUsuarioLogado();
+                
+                JOptionPane.showMessageDialog(null, "Bem-vindo(a), " + tfUsuario.getText());
                 
                 dispose();
             }else{
