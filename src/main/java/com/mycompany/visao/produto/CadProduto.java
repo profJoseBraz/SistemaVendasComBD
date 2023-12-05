@@ -244,6 +244,11 @@ public class CadProduto extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de produto");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jLabel1.setText("ID");
 
@@ -427,6 +432,10 @@ public class CadProduto extends javax.swing.JFrame {
         if(escolha == JOptionPane.YES_OPTION)
             excluir();
     }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        Formularios.cadProduto = null;
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments

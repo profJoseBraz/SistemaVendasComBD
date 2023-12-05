@@ -53,6 +53,7 @@ com\mycompany\visao\outros\cliente\TelaLogin$1.class
 com\mycompany\visao\pais\ListPais$1.class
 com\mycompany\visao\categoria\ListCategoria.class
 com\mycompany\visao\estado\CadEstado$6.class
+com\mycompany\visao\pedido\ListPedido$4.class
 com\mycompany\visao\estado_civil\CadEstadoCivil$4.class
 com\mycompany\modelo\ModPais.class
 com\mycompany\visao\pais\ListPais$5.class
@@ -87,12 +88,14 @@ com\mycompany\visao\pessoa\CadPessoa$3.class
 com\mycompany\dao\DaoPais.class
 com\mycompany\visao\marca\ListMarca$3.class
 com\mycompany\visao\outros\corporativo\MenuPrincipal$18.class
+com\mycompany\visao\endereco\ListEndereco$5.class
 com\mycompany\visao\outros\cliente\TelaVenda$5.class
 com\mycompany\visao\pessoa\ListPessoa$3.class
 com\mycompany\visao\cidade\ListCidade$1.class
 com\mycompany\visao\marca\ListMarca$5.class
 com\mycompany\visao\estado\ListEstado$1.class
 com\mycompany\visao\pais\CadPais$1.class
+com\mycompany\visao\produto\ListProduto$5.class
 com\mycompany\visao\outros\corporativo\MenuPrincipal$9.class
 com\mycompany\visao\cidade\CadCidade$1.class
 com\mycompany\visao\estado_civil\ListEstadoCivil$3.class
@@ -149,6 +152,7 @@ com\mycompany\visao\outros\cliente\TelaVenda$1.class
 com\mycompany\visao\produto\CadProduto$6.class
 com\mycompany\dao\DaoMarca.class
 com\mycompany\visao\endereco\ListEndereco.class
+com\mycompany\visao\outros\cliente\MenuPrincipalFrontEnd$7.class
 com\mycompany\visao\outros\corporativo\MenuPrincipal$7.class
 com\mycompany\visao\pais\CadPais$3.class
 com\mycompany\visao\estado\CadEstado$3.class
@@ -180,4 +184,5 @@ com\mycompany\visao\outros\cliente\TelaLogin$5.class
 com\mycompany\visao\pessoa\CadPessoa$6.class
 com\mycompany\visao\estado\ListEstado.class
 com\mycompany\visao\pais\ListPais$3.class
+com\mycompany\visao\produto\CadProduto$7.class
 com\mycompany\visao\estado_civil\CadEstadoCivil$2.class

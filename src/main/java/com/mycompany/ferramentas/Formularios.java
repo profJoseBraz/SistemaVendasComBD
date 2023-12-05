@@ -30,7 +30,7 @@ public class Formularios {
     
     //Endereço
     public static JFrame cadEndereco;
-    public static JFrame listEnderesco;
+    public static JFrame listEndereco;
     
     //Pessoa
     public static JFrame cadPessoa;

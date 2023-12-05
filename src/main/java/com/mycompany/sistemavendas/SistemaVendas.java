@@ -7,6 +7,7 @@ package com.mycompany.sistemavendas;
 import com.mycompany.ferramentas.BancoDeDadosMySql;
 import com.mycompany.dao.DaoCategoria;
 import java.sql.Connection;
+import javax.swing.JOptionPane;
 
 /**
  *

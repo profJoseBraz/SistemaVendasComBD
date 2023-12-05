@@ -139,7 +139,7 @@ public class CadEndereco extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Não foi possível excluir o endereço!");
         }
         
-        ((ListEndereco) Formularios.listEnderesco).listarTodos();
+        ((ListEndereco) Formularios.listEndereco).listarTodos();
         
         dispose();
     }

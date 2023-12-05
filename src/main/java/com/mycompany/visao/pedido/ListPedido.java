@@ -6,6 +6,7 @@ package com.mycompany.visao.pedido;
 
 import com.mycompany.dao.DaoCidade;
 import com.mycompany.dao.DaoPedido;
+import com.mycompany.ferramentas.Formularios;
 import java.sql.ResultSet;
 import javax.swing.table.DefaultTableModel;
 
@@ -352,6 +353,11 @@ public class ListPedido extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consulta de pedidos");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jcbTipoFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TODOS", "NOME CLIENTE", "SOBRENOME CIENTE", "PRODUTO", "DATA PEDIDO MAIOR QUE", "DATA PEDIDO MENOR QUE", "DATA PEDIDO IGUAL A", "TOTAL MAIOR QUE", "TOTAL MENOR QUE", "TOTAL IGUAL A" }));
 
@@ -468,6 +474,10 @@ public class ListPedido extends javax.swing.JFrame {
                 break;
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        Formularios.listPedido = null;
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments

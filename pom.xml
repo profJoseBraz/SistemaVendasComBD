@@ -9,15 +9,34 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>20</maven.compiler.source>
         <maven.compiler.target>20</maven.compiler.target>
-        <exec.mainClass>com.mycompany.sistemavendas.SistemaVendas</exec.mainClass>
+        <exec.mainClass>com.mycompany.visao.outros.cliente.MenuPrincipalFrontEnd</exec.mainClass>
     </properties>
     
     <dependencies>
-    <!-- Outras dependências do seu projeto -->
-    <dependency>
-        <groupId>mysql</groupId>
-        <artifactId>mysql-connector-java</artifactId>
-        <version>8.0.28</version> <!-- Substitua pela versão mais recente disponível -->
-    </dependency>
+        <!-- Outras dependências do seu projeto -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.28</version> <!-- Substitua pela versão mais recente disponível -->
+        </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>com.mycompany.visao.outros.cliente.MenuPrincipalFrontEnd</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
 </project>

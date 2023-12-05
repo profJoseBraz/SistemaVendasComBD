@@ -10,6 +10,7 @@ import com.mycompany.dao.DaoMarca;
 import com.mycompany.dao.DaoPais;
 import com.mycompany.dao.DaoProduto;
 import com.mycompany.ferramentas.DadosTemporarios;
+import com.mycompany.ferramentas.Formularios;
 import com.mycompany.modelo.ModEstado;
 import com.mycompany.modelo.ModProduto;
 import com.mycompany.visao.estado.CadEstado;
@@ -303,6 +304,11 @@ public class ListProduto extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consulta de produto");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jcbTipoFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TODOS", "ID", "CATEGORIA", "MARCA", "NOME", "DESCRIÇÃO", "PREÇO IGUAL A", "PREÇO MAIOR QUE", "PREÇO MENOR QUE" }));
 
@@ -463,6 +469,10 @@ public class ListProduto extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_tableProdutoMouseClicked
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        Formularios.listProduto = null;
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
